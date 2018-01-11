@@ -1,21 +1,37 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+
+import Dashboard from './Dashboard';
+import List from './List';
+import AddRun from './AddRun';
+import Favourites from './Favourites';
+import Run from './Run';
+import Contact from './Contact';
+import AppBar from './AppBar';
+import SideBar from './SideBar';
+
+
+
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <Router>
+                <div>
+                    <AppBar/>
+
+                    <SideBar/>
+
+                    <Route path='/' component={Dashboard} exact={true} />
+                    <Route path='/list' component={List} />
+                    <Route path='/add-run' component={AddRun} />
+                    <Route path='/favourites' component={Favourites} />
+                    <Route path='/run' component={Run} />
+                    <Route path='/contact' component={Contact} />
+                </div>
+            </Router>
+        );
+    }
 }
 
 export default App;
