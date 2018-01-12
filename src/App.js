@@ -10,6 +10,13 @@ import Contact from './Contact';
 import AppBar from './AppBar';
 import SideBar from './SideBar';
 
+import PieChart from './PieChart';
+
+
+class PieChart extends React.component{
+    render(){
+        console.log(this.PieChart);
+    }
 
 
 
@@ -21,6 +28,14 @@ class App extends Component {
                     <AppBar/>
 
                     <SideBar/>
+
+                    <PieChart/>
+                    <Dashboard
+
+                    />
+
+
+
 
                     <Route path='/' component={Dashboard} exact={true} />
                     <Route path='/list' component={List} />
