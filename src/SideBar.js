@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 
-class SideBar extends React.Component {
+class SideBar extends Component {
     render() {
         return (
             <div>
@@ -12,8 +13,26 @@ class SideBar extends React.Component {
                     open={this.props.isSideBarOpenProps}
                     onRequestChange={this.props.toggleSideBarProps}
                 >
-                    <MenuItem>Menu Item</MenuItem>
-                    <MenuItem>Menu Item 2</MenuItem>
+                    <Link to="/add-run">
+                        <MenuItem onClick={this.props.toggleSideBarProps}>
+                            Nowy bieg
+                        </MenuItem>
+                    </Link>
+                    <Link to="/list">
+                        <MenuItem onClick={this.props.toggleSideBarProps}>
+                            Lista biegów
+                        </MenuItem>
+                    </Link>
+                    <Link to="/favourites">
+                        <MenuItem onClick={this.props.toggleSideBarProps}>
+                            Ulubione
+                        </MenuItem>
+                    </Link>
+                    <Link to="/contact">
+                        <MenuItem onClick={this.props.toggleSideBarProps}>
+                            Kontakt
+                        </MenuItem>
+                    </Link>
                 </Drawer>
             </div>
         );
