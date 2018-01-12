@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const List = () => (
-    <div>
-        List
-    </div>
-)
+class List extends Component {
+    state = {}
+
+    render(){
+
+    }
+}
 
 export default List;
