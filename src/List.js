@@ -1,9 +1,12 @@
-import React from 'react';
+import React from 'react'
+import WebeesPaper from './WebeesPaper'
 
 const List = () => (
     <div>
-        List
+        <WebeesPaper>
+            <b>asdfghjkxrtdfyguhj</b>
+        </WebeesPaper>
     </div>
 )
 
-export default List;
+export default List
