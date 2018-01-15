@@ -1,14 +1,13 @@
 import React from 'react';
+import PieChart from './PieChart'
 
-/*const Dashboard = () => (
+const NewChart = (props) => (
     <div>
-        Dashboard = () =>(
-
-        )
+        {props.LineChart}
 
     </div>
 
 
-)*/
+)
 
 export default Dashboard;

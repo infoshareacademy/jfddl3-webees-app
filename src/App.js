@@ -13,12 +13,6 @@ import SideBar from './SideBar';
 import PieChart from './PieChart';
 
 
-class PieChart extends React.component{
-    render(){
-        console.log(this.PieChart);
-    }
-
-
 
 class App extends Component {
     render() {
@@ -30,13 +24,11 @@ class App extends Component {
                     <SideBar/>
 
                     <PieChart/>
-                    <Dashboard
-
-                    />
+                    <Dashboard/>
 
 
 
-
+                    <Route path='/' component={PieChart} exact={true} />
                     <Route path='/' component={Dashboard} exact={true} />
                     <Route path='/list' component={List} />
                     <Route path='/add-run' component={AddRun} />
