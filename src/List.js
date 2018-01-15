@@ -1,17 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react'
+import WebeesPaper from './WebeesPaper'
 
-class List extends Component {
-    state = {}
+const List = () => (
+    <div>
+        <WebeesPaper>
+            <b>asdfghjkxrtdfyguhj</b>
+        </WebeesPaper>
+    </div>
+)
 
-    render() {
-        return (
-            <div>
-                {
-
-                }
-            </div>
-        )
-    }
-}
-
-export default List;
+export default List
