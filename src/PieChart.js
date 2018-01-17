@@ -26,10 +26,11 @@ const PieChart = () => (
         <RePieChart width={500} height={500}>
 
             <Pie
+
                 data={data}
                 dataKey="value"
                 nameKey="name"
-                fill="#8884d8"
+                fill='blue'
             />
             <Tooltip/>
         </RePieChart>

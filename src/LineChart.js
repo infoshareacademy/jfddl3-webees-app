@@ -18,8 +18,8 @@ const data = [
         value: 15,
         name: 'bieg4'
     }
-
 ]
+
 
 const LineChart = () => (
     <div>
