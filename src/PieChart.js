@@ -4,13 +4,22 @@ import { PieChart, Pie, Tooltip }  from 'recharts'
 
 const data = [
     {
-        value: 30,
-        name: 'biegi'
+        value: 10,
+        name: 'bieg1'
     },
     {
-        value: 40,
-        name: 'inne biegi'
+        value: 20,
+        name: 'bieg2'
+    },
+    {
+        value: 20,
+        name: 'bieg3'
+    },
+    {
+        value: 15,
+        name: 'bieg4'
     }
+
 ]
 
 const App = () => (
