@@ -1,6 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { PieChart, Pie, Tooltip }  from 'recharts'
+import { PieChart as RePieChart, Pie, Tooltip }  from 'recharts'
 
 const data = [
     {
@@ -22,9 +21,9 @@ const data = [
 
 ]
 
-const App = () => (
+const PieChart = () => (
     <div id="root">
-        <PieChart width={500} height={500}>
+        <RePieChart width={500} height={500}>
 
             <Pie
                 data={data}
@@ -33,11 +32,8 @@ const App = () => (
                 fill="#8884d8"
             />
             <Tooltip/>
-        </PieChart>
+        </RePieChart>
     </div>
 );
-
-
-render(<App />, document.getElementById('root'));
 
 export default PieChart;
