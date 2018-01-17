@@ -24,7 +24,7 @@ class App extends Component {
                     <SideBar/>
 
                     <PieChart/>
-                    <Dashboard/>
+
 
 
 
@@ -40,5 +40,6 @@ class App extends Component {
         );
     }
 }
+
 
 export default App;
