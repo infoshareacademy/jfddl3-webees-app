@@ -35,12 +35,11 @@ class List extends React.Component {
                             style={styles.gridList}
                             cols={this.state.cols}
                         >
-                            <Subheader>December</Subheader>
+                            <Subheader>Galeria</Subheader>
                             {tilesData.map((tile) => (
                                 <GridTile
                                     key={tile.img}
                                     title={tile.title}
-                                    subtitle={<span>by <b>{tile.author}</b></span>}
                                     actionIcon={<IconButton><StarBorder color="white"/></IconButton>}
                                 >
                                     <img src={tile.img}/>
@@ -57,61 +56,43 @@ class List extends React.Component {
 
 const tilesData = [
     {
-        img: 'img/lorem-ipsum.jpg',
-        title: 'Breakfast',
-        author: 'jill111',
+        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
+        title: 'Mapa1',
     },
     {
-        img: 'images/grid-list/burger-827309_640.jpg',
-        title: 'Tasty burger',
-        author: 'pashminu',
+        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
+        title: 'Mapa2',
     },
     {
-        img: 'images/grid-list/camera-813814_640.jpg',
-        title: 'Camera',
-        author: 'Danson67',
+        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
+        title: 'Mapa3',
     },
     {
-        img: 'images/grid-list/morning-819362_640.jpg',
-        title: 'Morning',
-        author: 'fancycrave1',
+        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
+        title: 'Mapa4',
     },
     {
-        img: 'images/grid-list/morning-819362_640.jpg',
-        title: 'Morning',
-        author: 'fancycrave1',
+        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
+        title: 'Mapa5',
     },
     {
-        img: 'images/grid-list/morning-819362_640.jpg',
-        title: 'Morning',
-        author: 'fancycrave1',
+        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
+        title: 'Mapa6',
     },
     {
-        img: 'images/grid-list/morning-819362_640.jpg',
-        title: 'Morning',
-        author: 'fancycrave1',
+        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
+        title: 'Mapa7',
     },
     {
-        img: 'images/grid-list/morning-819362_640.jpg',
-        title: 'Morning',
-        author: 'fancycrave1',
+        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
+        title: 'Mapa8',
     },
     {
-        img: 'images/grid-list/morning-819362_640.jpg',
-        title: 'Morning',
-        author: 'fancycrave1',
+        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
+        title: 'Mapa9',
     },
-    {
-        img: 'images/grid-list/morning-819362_640.jpg',
-        title: 'Morning',
-        author: 'fancycrave1',
-    },
-    {
-        img: 'images/grid-list/morning-819362_640.jpg',
-        title: 'Morning',
-        author: 'fancycrave1',
-    }
-];
+
+]
 
 const styles = {
     root: {
@@ -123,7 +104,7 @@ const styles = {
         width: '100%',
         height: 450,
         overflowY: 'auto',
-    },
+    }
 };
 
 export default List
