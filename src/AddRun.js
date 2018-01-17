@@ -1,8 +1,13 @@
 import React, {Component} from 'react'
 import {render} from 'react-dom'
 import GoogleMapReact from 'google-map-react'
+import AddButton from './AddButton'
+import SelectField from './SelectField'
+import TextField from './TextField'
 
 const Pin = () => <div><i className="material-icons" style={{color: 'red'}}>room</i></div>
+
+const databaseUrl = 'https://my-project-15d7d.firebaseio.com/'
 
 class Map extends React.Component {
     render() {
@@ -32,15 +37,34 @@ class AddRun extends React.Component {
     state = {
         markers: [],
         name: '',
-        type: ''
+        type: '',
+        runCategory: 'city',
     }
 
+    handleChange = (event, index, value) => {this.setState({runCategory: value}); console.log(value)};
+
     save = () => {
-        fetch('https://my-project-15d7d.firebaseio.com/.json', {
-            method: 'POST',
-            body: JSON.stringify(this.state.markers),
-            headers: ({'Content-Type': 'application/json'})
-        })
+        // fetch(databaseUrl + 'list/' + '/.json',
+        //     {
+        //     method: 'POST',
+        //     body: JSON.stringify({
+        //         name: this.state.name,
+        //         type: this.state.type,
+        //         markers: this.state.markers
+        //     }),
+        //     headers: ({'Content-Type': 'application/json'})
+        //     })
+        //     .then(() => this.getData())
+        console.log('save')
+    }
+
+    getData = () => {
+        fetch(databaseUrl + 'list/.json')
+            .then(response => response.json())
+            .then(dataFromDb => this.setState({
+                list: dataFromDb,
+                newTaskName: ""
+            }))
     }
 
     placeMarker = ({lat, lng}) => {
@@ -59,6 +83,15 @@ class AddRun extends React.Component {
                     zoom={15}
                     markers={this.state.markers}
                     placeMarker={this.placeMarker}
+                />
+                <TextField
+                />
+                <SelectField
+                    runCategory={this.state.runCategory}
+                    onSelectChange={this.handleChange}
+                />
+                <AddButton
+                    onBtnClick={this.save}
                 />
             </div>
         )
