@@ -11,7 +11,7 @@ import {database} from "./firebase";
 class ListView extends React.Component {
     state = {
         cols: 2,
-        runs: null
+        runs: []
     }
 
     componentWillMount() {
@@ -49,8 +49,8 @@ class ListView extends React.Component {
                             cols={this.state.cols}
                         >
                             <Subheader>Galeria</Subheader>
-                            {tilesData
-                                .filter(tile => tile.title.indexOf(this.props.searchParams.name) !== -1)
+                            {this.state.runs
+                                .filter(tile => tile.name.indexOf(this.props.searchParams.name) !== -1)
                                 // .filter(tile => tile.category === this.searchParams.props.category)
                                 // .filter(tile => tile.distance < this.searchParams.props.distance )
                                 .map((tile) => (
@@ -72,47 +72,6 @@ class ListView extends React.Component {
     }
 
 }
-
-const tilesData = [
-    {
-        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
-        title: 'Mapa1 butt',
-    },
-    {
-        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
-        title: 'Mapa2 dupa',
-    },
-    {
-        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
-        title: 'Mapa3',
-    },
-    {
-        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
-        title: 'Mapa4',
-    },
-    {
-        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
-        title: 'Mapa5',
-    },
-    {
-        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
-        title: 'Mapa6',
-    },
-    {
-        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
-        title: 'Mapa7',
-    },
-    {
-        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
-        title: 'Mapa8',
-    },
-    {
-        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
-        title: 'Mapa9',
-    },
-
-]
-
 
 const styles = {
     root: {
