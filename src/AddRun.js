@@ -1,36 +1,9 @@
 import React, { Component } from 'react'
-import { render } from 'react-dom'
-import GoogleMapReact from 'google-map-react'
 import AddButton from './AddButton'
 import SelectField from './SelectField'
 import TextField from './TextField'
+import Map from './Map'
 import { database } from './firebase'
-
-const Pin = props => (<div><i className="material-icons" style={{ color: 'red' }}>room</i>{props.index + 1}</div>)
-
-class Map extends React.Component {
-    render() {
-        return (
-            <GoogleMapReact
-                apiKey={'AIzaSyBjbSX619TpTJBp9afQKJUuueKAF9ZGawc'}
-                defaultCenter={this.props.center}
-                defaultZoom={this.props.zoom}
-                onClick={this.props.placeMarker}
-            >
-                {
-                    this.props.markers.map((marker, index) =>
-                        <Pin
-                            key={marker.key}
-                            lat={marker.lat}
-                            lng={marker.lng}
-                            index={index}
-                        />
-                    )
-                }
-            </GoogleMapReact>
-        )
-    }
-}
 
 class AddRun extends React.Component {
     state = {
