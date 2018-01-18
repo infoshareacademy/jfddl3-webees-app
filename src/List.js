@@ -7,40 +7,54 @@ import TextField from 'material-ui/TextField';
 
 
 class List extends React.Component {
-    state = {value: ''};
+    state = {category: '', name: '', distance: ''};
 
-    handleChange = (e, index, value) => this.setState({value: value});
+    handleCategoryChange = (e, index, value) => this.setState({category: value});
+
+    handleNameChange = (e, value) => this.setState({name: value});
+
+    handleDistanceChange = (e, value) => this.setState({distance: value});
 
     render() {
         return (
             <div>
                 <WebeesPaper>
-                    <h2>Dystans</h2>
-                    <div style={{textAlign: 'left'}}>0 km</div>
-                    <div>
-                        <Slider
-                            min={0}
-                            max={50}/>
-                    </div>
-                    <div style={{textAlign: 'right'}}>50km</div>
-                    <h2>Wybierz rodzaj biegu</h2>
-                    <div>
-                        <DropDownMenu value={this.state.value} onChange={this.handleChange}>
-                            <MenuItem value={1} primaryText="Bieg po lesie"/>
-                            <MenuItem value={2} primaryText="Bieg po mieście"/>
-                        </DropDownMenu>
-                        <br/>
-                    </div>
-                    <h2>Wyszukaj bieg</h2>
                     <div>
                         <TextField
-                            hintText="Szukaj"
+                            onChange={this.handleNameChange}
+                            hintText="Wpisz nazwę biegu"
                             fullWidth={true}
                         />
+                        <div>
+                            <div style={{display: 'inline-block', textAlign: 'left', width: '10%'}}>0 km</div>
+                            <div style={{display: 'inline-block', width: '80%'}}>
+                                <Slider
+                                    sliderStyle={{marginBottom: 0}}
+                                    min={0}
+                                    max={50}
+                                    onChange={this.handleDistanceChange}
+                                />
+                            </div>
+                            <div style={{display: 'inline-block', textAlign: 'right', width: '10%'}}>50km</div>
+                        </div>
+                        <div>
+                            <DropDownMenu
+                                autoWidth={false}
+                                style={{width: '100%'}}
+                                value={this.state.category}
+                                onChange={this.handleCategoryChange}
+                            >
+                                <MenuItem value={''} primaryText="Wybierz bieg"/>
+                                <MenuItem value={'city'} primaryText="Bieg po lesie"/>
+                                <MenuItem value={'forest'} primaryText="Bieg po mieście"/>
+                            </DropDownMenu>
+                            <br/>
+                        </div>
                     </div>
                 </WebeesPaper>
             </div>
         )
     }
 }
+
 export default List
