@@ -5,6 +5,7 @@ const data = [
     {
         value: 10,
         name: 'bieg1'
+
     },
     {
         value: 20,
@@ -26,7 +27,6 @@ const PieChart = () => (
         <RePieChart width={500} height={500}>
 
             <Pie
-
                 data={data}
                 dataKey="value"
                 nameKey="name"

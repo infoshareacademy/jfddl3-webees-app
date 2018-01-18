@@ -1,11 +1,14 @@
 import React from 'react';
-import LineChart from './LineChart'
+import NewBarChart from './BarChart'
 import PieChart from './PieChart'
+import ReLineChart from './ReLineChart'
 
 const Dashboard = () => (
     <div>
-        <PieChart/>
-        <LineChart/>
+         <PieChart/>
+        <NewBarChart/>
+        <ReLineChart/>
+
     </div>
 )
 
