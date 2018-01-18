@@ -5,11 +5,13 @@ import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import {database} from "./firebase";
 
 
 class ListView extends React.Component {
     state = {
-        cols: 2
+        cols: 2,
+        runs: null
     }
 
     componentWillMount() {
@@ -24,6 +26,16 @@ class ListView extends React.Component {
                 cols: 4
             })
         }
+
+        var dbRef = database.ref('/runs');
+        dbRef.once('value', snapshot => {
+            const runFromDataBase = Object.entries(snapshot.val())
+                .map(([key, val]) => {
+                    val.key = key
+                    return val
+                })
+            this.setState({runs: runFromDataBase})
+        })
     }
 
     render() {
@@ -37,17 +49,21 @@ class ListView extends React.Component {
                             cols={this.state.cols}
                         >
                             <Subheader>Galeria</Subheader>
-                            {tilesData.map((tile) => (
-                                <Link to={'/'+tile.title}>
-                                <GridTile
-                                    key={tile.img}
-                                    title={tile.title}
-                                    actionIcon={<IconButton><StarBorder color="white"/></IconButton>}
-                                >
-                                    <img src={tile.img}/>
-                                </GridTile>
-                                </Link>
-                            ))}
+                            {tilesData
+                                .filter(tile => tile.title.indexOf(this.props.searchParams.name) !== -1)
+                                // .filter(tile => tile.category === this.searchParams.props.category)
+                                // .filter(tile => tile.distance < this.searchParams.props.distance )
+                                .map((tile) => (
+                                    <Link to={'/' + tile.title}>
+                                        <GridTile
+                                            key={tile.img}
+                                            title={tile.title}
+                                            actionIcon={<IconButton><StarBorder color="white"/></IconButton>}
+                                        >
+                                            <img src={tile.img}/>
+                                        </GridTile>
+                                    </Link>
+                                ))}
                         </GridList>
                     </div>
                 </WebeesPaper>
@@ -59,43 +75,44 @@ class ListView extends React.Component {
 
 const tilesData = [
     {
-        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
-        title: 'Mapa1',
+        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
+        title: 'Mapa1 butt',
     },
     {
-        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
-        title: 'Mapa2',
+        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
+        title: 'Mapa2 dupa',
     },
     {
-        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
+        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
         title: 'Mapa3',
     },
     {
-        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
+        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
         title: 'Mapa4',
     },
     {
-        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
+        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
         title: 'Mapa5',
     },
     {
-        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
+        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
         title: 'Mapa6',
     },
     {
-        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
+        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
         title: 'Mapa7',
     },
     {
-        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
+        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
         title: 'Mapa8',
     },
     {
-        img: process.env.PUBLIC_URL+'img/run-google-map.jpg',
+        img: process.env.PUBLIC_URL + 'img/run-google-map.jpg',
         title: 'Mapa9',
     },
 
 ]
+
 
 const styles = {
     root: {
