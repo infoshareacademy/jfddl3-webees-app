@@ -6,7 +6,7 @@ export default (props) => (
     <div>
         <SelectField
             floatingLabelText="Rodzaj biegu"
-            value={props.runCategory}
+            value={props.category}
             onChange={props.onSelectChange}
         >
             <MenuItem value={'city'} primaryText="Miejski"/>

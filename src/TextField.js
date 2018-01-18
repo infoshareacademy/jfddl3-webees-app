@@ -1,11 +1,12 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
 
-const TextFieldExampleSimple = () => (
+const TextFieldExampleSimple = (props) => (
     <div>
         <TextField
-            defaultValue="Nazwa biegu"
             floatingLabelText="Nazwa biegu"
+            value={props.name}
+            onChange={props.onTextFieldChange}
         />
     </div>
 );
