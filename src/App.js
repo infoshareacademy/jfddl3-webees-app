@@ -11,6 +11,7 @@ import Contact from './Contact';
 import AppBar from './AppBar';
 import SideBar from './SideBar';
 
+
 class App extends Component {
     state = {
         isSideBarOpenState: false
