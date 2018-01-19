@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Run = () => (
+const Run = (props) => (
     <div>
-        Run
+        {props.match.params.id}
     </div>
 )
 

@@ -39,7 +39,7 @@ class App extends Component {
                     <Route path='/list' component={List}/>
                     <Route path='/add-run' component={AddRun}/>
                     <Route path='/favourites' component={Favourites}/>
-                    <Route path='/run' component={Run}/>
+                    <Route path='/run/:id' component={Run}/>
                     <Route path='/contact' component={Contact}/>
                 </div>
             </Router>

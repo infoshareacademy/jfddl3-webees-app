@@ -39,6 +39,8 @@ class ListView extends React.Component {
     }
 
     render() {
+        // console.log(this.state.runs)
+        // console.log('cat', this.props.searchParams.category)
         return (
             <div>
                 <WebeesPaper>
@@ -50,17 +52,19 @@ class ListView extends React.Component {
                         >
                             <Subheader>Galeria</Subheader>
                             {this.state.runs
-                                .filter(tile => tile.name.indexOf(this.props.searchParams.name) !== -1)
-                                // .filter(tile => tile.category === this.searchParams.props.category)
-                                // .filter(tile => tile.distance < this.searchParams.props.distance )
-                                .map((tile) => (
-                                    <Link to={'/' + tile.title}>
+                                .filter(run => run.name.indexOf(this.props.searchParams.name) !== -1)
+                                .filter(run => this.props.searchParams.category === '' ? true : run.category === this.props.searchParams.category)
+                                .filter(run => run.distance < this.props.searchParams.distance)
+                                .map((run) => (
+                                    <Link
+                                        key={run.key}
+                                        to={'/run/' + run.key}
+                                    >
                                         <GridTile
-                                            key={tile.img}
-                                            title={tile.title}
+                                            title={run.name}
                                             actionIcon={<IconButton><StarBorder color="white"/></IconButton>}
                                         >
-                                            <img src={tile.img}/>
+                                            <img src={`${process.env.PUBLIC_URL}/img/run-google-map.jpg`}/>
                                         </GridTile>
                                     </Link>
                                 ))}
