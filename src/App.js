@@ -25,6 +25,7 @@ class App extends Component {
     render() {
         return (
             <MuiThemeProvider>
+                <div>
                 <Router>
                     <div>
                         <AppBar
@@ -45,6 +46,7 @@ class App extends Component {
                     </div>
                 </Router>
                 <ShareButton/>
+                </div>
             </MuiThemeProvider>
         )
 
