@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Dashboard from './Dashboard';
@@ -10,6 +10,7 @@ import Run from './Run';
 import Contact from './Contact';
 import AppBar from './AppBar';
 import SideBar from './SideBar';
+import styles from './styles'
 
 class App extends Component {
     state = {
@@ -17,7 +18,7 @@ class App extends Component {
     }
 
     toggleSideBar = () => (
-        this.setState({isSideBarOpenState: !this.state.isSideBarOpenState})
+        this.setState({ isSideBarOpenState: !this.state.isSideBarOpenState })
     )
 
     render() {
@@ -31,20 +32,19 @@ class App extends Component {
                         />
                         <SideBar
                             isSideBarOpenProps={this.state.isSideBarOpenState}
-                            toggleSideBarProps = {this.toggleSideBar}
+                            toggleSideBarProps={this.toggleSideBar}
                         />
 
-                    <Route path='/' component={Dashboard} exact={true}/>
-                    <Route path='/list' component={List}/>
-                    <Route path='/add-run' component={AddRun}/>
-                    <Route path='/favourites' component={Favourites}/>
-                    <Route path='/run' component={Run}/>
-                    <Route path='/contact' component={Contact}/>
-                </div>
-            </Router>
-    </MuiThemeProvider>
-    )
-        ;
+                        <Route path='/' component={Dashboard} exact={true} />
+                        <Route path='/list' component={List} />
+                        <Route path='/add-run' component={AddRun} />
+                        <Route path='/favourites' component={Favourites} />
+                        <Route path='/run' component={Run} />
+                        <Route path='/contact' component={Contact} />
+                    </div>
+                </Router>
+            </MuiThemeProvider>
+        )
     }
 }
 

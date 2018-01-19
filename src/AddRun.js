@@ -30,10 +30,10 @@ class AddRun extends React.Component {
         const markerData = { lat, lng, key: Date.now() }
         this.setState({
             markers: this.state.markers.concat(markerData),
-            distance: this.getDistanceFromLatLonInKm( this.state.markers.concat(markerData))
+            distance: this.getDistanceFromLatLonInKm(this.state.markers.concat(markerData))
         }, () => {
-        console.dir(this.state.markers);
-        console.dir(this.state.distance);
+            console.dir(this.state.markers);
+            console.dir(this.state.distance);
         })
     }
 
@@ -73,13 +73,20 @@ class AddRun extends React.Component {
     render() {
 
         return (
-            <div style={{ width: '50vw', height: '50vh' }}>
-                <Map
-                    center={{ lat: 51.216276, lng: 22.631233 }}
-                    zoom={15}
-                    markers={this.state.markers}
-                    placeMarker={this.placeMarker}
-                />
+            <div style={{ margin: '10px', fontFamily: 'Quicksand', fontSize: '1.5em', color: '#132326' }}>
+                <div style={{ margin: '1em'}}>Dodaj nowy bieg!</div>
+                <div
+                    style={{ border: '1px solid black', width: '50vw', height: '50vh' }}
+                >
+                    <Map
+                        center={{ lat: 51.216276, lng: 22.631233 }}
+                        zoom={15}
+                        markers={this.state.markers}
+                        placeMarker={this.placeMarker}
+                    // 
+
+                    />
+                </div>
                 <TextField
                     name={this.state.name}
                     onTextFieldChange={this.textFieldChange}
