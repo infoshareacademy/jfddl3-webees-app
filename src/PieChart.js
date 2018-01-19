@@ -1,19 +1,24 @@
 import React from 'react';
 import { PieChart as RePieChart, Pie, Tooltip }  from 'recharts'
 
+
+
 const data = [
     {
         value: 10,
-        name: 'bieg1'
+        name: 'bieg1',
+        fill:'red'
 
     },
     {
         value: 20,
-        name: 'bieg2'
+        name: 'bieg2',
+        fill:'yellow'
     },
     {
         value: 20,
-        name: 'bieg3'
+        name: 'bieg3',
+        fill:'pink'
     },
     {
         value: 15,
@@ -24,6 +29,8 @@ const data = [
 
 const PieChart = () => (
     <div id="root">
+        <div>
+            <h2>Najpopularniejsze trasy</h2>
         <RePieChart width={500} height={500}>
 
             <Pie
@@ -34,6 +41,7 @@ const PieChart = () => (
             />
             <Tooltip/>
         </RePieChart>
+        </div>
     </div>
 );
 

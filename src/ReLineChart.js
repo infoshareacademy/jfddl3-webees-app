@@ -14,6 +14,8 @@ const data = [
 
 const ReLineChart = () => (
     <div id="chart">
+        <div>
+            <h2>Moje trasy</h2>
         <LineChart
             width={400}
             height={400}
@@ -26,6 +28,7 @@ const ReLineChart = () => (
             <Line type="monotone" dataKey="uv" stroke="#ff7300" yAxisId={0}/>
             <Line type="monotone" dataKey="pv" stroke="#387908" yAxisId={1}/>
         </LineChart>
+        </div>
     </div>
 );
 
