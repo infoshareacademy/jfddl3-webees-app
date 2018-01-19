@@ -40,7 +40,7 @@ class ListView extends React.Component {
 
     render() {
         // console.log(this.state.runs)
-        // console.log('cat', this.props.searchParams.category)
+        console.log(this.props.searchParams.distance)
         return (
             <div>
                 <WebeesPaper>

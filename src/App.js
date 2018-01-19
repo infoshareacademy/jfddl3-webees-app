@@ -10,6 +10,7 @@ import Run from './Run';
 import Contact from './Contact';
 import AppBar from './AppBar';
 import SideBar from './SideBar';
+import ShareButton from './ShareButton'
 
 
 class App extends Component {
@@ -32,20 +33,21 @@ class App extends Component {
                         />
                         <SideBar
                             isSideBarOpenProps={this.state.isSideBarOpenState}
-                            toggleSideBarProps = {this.toggleSideBar}
+                            toggleSideBarProps={this.toggleSideBar}
                         />
 
-                    <Route path='/' component={Dashboard} exact={true}/>
-                    <Route path='/list' component={List}/>
-                    <Route path='/add-run' component={AddRun}/>
-                    <Route path='/favourites' component={Favourites}/>
-                    <Route path='/run/:id' component={Run}/>
-                    <Route path='/contact' component={Contact}/>
-                </div>
-            </Router>
-    </MuiThemeProvider>
-    )
-        ;
+                        <Route path='/' component={Dashboard} exact={true}/>
+                        <Route path='/list' component={List}/>
+                        <Route path='/add-run' component={AddRun}/>
+                        <Route path='/favourites' component={Favourites}/>
+                        <Route path='/run/:id' component={Run}/>
+                        <Route path='/contact' component={Contact}/>
+                    </div>
+                </Router>
+                <ShareButton/>
+            </MuiThemeProvider>
+        )
+
     }
 }
 
