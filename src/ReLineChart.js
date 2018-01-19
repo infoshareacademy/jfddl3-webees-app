@@ -4,11 +4,11 @@ import {LineChart, XAxis, Tooltip, CartesianGrid, Line} from 'recharts'
 
 
 const data = [
-    {name: '0km', uv: 0, pv: 0},
-    {name: '5km', uv: 1000, pv: 500},
-    {name: '10km', uv: 2780, pv: 1800},
-    {name: '15km', uv: 1890, pv: 1000},
-    {name: '20km', uv: 1890, pv: 2500},
+    {name: '0km', Miest: 0, Las: 0},
+    {name: '5km', Miasto: 1000, Las: 500},
+    {name: '10km', Miasto: 2780, Las: 1800},
+    {name: '15km', Miasto: 1890, Las: 1000},
+    {name: '20km', Miasto: 1890, Las: 2500},
 
 ];
 
@@ -25,8 +25,8 @@ const ReLineChart = () => (
             <XAxis dataKey="name"/>
             <Tooltip/>
             <CartesianGrid stroke="#f5f5f5"/>
-            <Line type="monotone" dataKey="uv" stroke="#ff7300" yAxisId={0}/>
-            <Line type="monotone" dataKey="pv" stroke="#387908" yAxisId={1}/>
+            <Line type="monotone" dataKey="Miasto" stroke="#ff7300" yAxisId={0}/>
+            <Line type="monotone" dataKey="Las" stroke="#387908" yAxisId={1}/>
         </LineChart>
         </div>
     </div>

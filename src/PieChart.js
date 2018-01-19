@@ -6,23 +6,23 @@ import { PieChart as RePieChart, Pie, Tooltip }  from 'recharts'
 const data = [
     {
         value: 10,
-        name: 'bieg1',
+        name: 'Fellin',
         fill:'lime'
 
     },
     {
         value: 20,
-        name: 'bieg2',
+        name: 'Stare Miasto',
         fill:'yellow'
     },
     {
         value: 20,
-        name: 'bieg3',
+        name: 'Park Ludowy',
         fill:'green'
     },
     {
         value: 15,
-        name: 'bieg4'
+        name: 'Ogród Saski'
     }
 
 ]
