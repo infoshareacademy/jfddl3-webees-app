@@ -23,6 +23,7 @@ const ListSearch = (props) => (
                             min={0}
                             max={50}
                             onChange={props.handleDistanceChange}
+                            defaultValue={50}
                         />
                     </div>
                     <div style={{display: 'inline-block', textAlign: 'right', width: '10%'}}>50km</div>
