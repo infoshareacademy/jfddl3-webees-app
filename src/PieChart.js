@@ -7,7 +7,7 @@ const data = [
     {
         value: 10,
         name: 'bieg1',
-        fill:'red'
+        fill:'lime'
 
     },
     {
@@ -18,7 +18,7 @@ const data = [
     {
         value: 20,
         name: 'bieg3',
-        fill:'pink'
+        fill:'green'
     },
     {
         value: 15,
@@ -31,7 +31,7 @@ const PieChart = () => (
     <div id="root">
         <div>
             <h2>Najpopularniejsze trasy</h2>
-        <RePieChart width={500} height={500}>
+        <RePieChart width={400} height={400}>
 
             <Pie
                 data={data}

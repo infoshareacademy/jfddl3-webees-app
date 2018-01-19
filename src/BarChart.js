@@ -14,7 +14,7 @@ const NewBarChart = () => {
     return (
         <div>
             <h2>Dystans pokonanych odleglosci</h2>
-        <BarChart width={450} height={400} data={data}>
+        <BarChart width={350} height={350} data={data}>
             <Bar dataKey='uv' fill='#8884d8'/>
             <Bar dataKey='pv' fill='red'/>
         </BarChart>
