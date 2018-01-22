@@ -1,6 +1,6 @@
 import firebase from 'firebase'
 
-const config = {
+var config = {
     apiKey: "AIzaSyDYCQAgJpq1ujMczXgFewm-EGo-x7oWK3k",
     authDomain: "isa-webees.firebaseapp.com",
     databaseURL: "https://isa-webees.firebaseio.com",
