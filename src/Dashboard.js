@@ -10,13 +10,13 @@ const Dashboard = () => (
         <div>
             <Grid>
                 <Row>
-                    <Col xs={12} md={4}>
+                    <Col xs={12} md={6} lg={4}>
                         <PieChart/>
                     </Col>
-                    <Col xs={12} md={4}>
+                    <Col xs={12} md={6} lg={4}>
                         <NewBarChart/>
                     </Col>
-                    <Col xs={12} md={4}>
+                    <Col xs={12} md={6} lg={4}>
                         <ReLineChart/>
                     </Col>
                 </Row>
