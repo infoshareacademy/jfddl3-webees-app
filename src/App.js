@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, {Component} from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Dashboard from './Dashboard';
@@ -18,12 +18,13 @@ class App extends Component {
     }
 
     toggleSideBar = () => (
-        this.setState({ isSideBarOpenState: !this.state.isSideBarOpenState })
+        this.setState({isSideBarOpenState: !this.state.isSideBarOpenState})
     )
 
     render() {
         return (
             <MuiThemeProvider>
+                <div>
                 <Router>
                     <div>
                         <AppBar
@@ -32,7 +33,7 @@ class App extends Component {
                         />
                         <SideBar
                             isSideBarOpenProps={this.state.isSideBarOpenState}
-                            toggleSideBarProps={this.toggleSideBar}
+                            toggleSideBarProps = {this.toggleSideBar}
                         />
 
                         <Route path='/' component={Dashboard} exact={true} />
@@ -43,8 +44,13 @@ class App extends Component {
                         <Route path='/contact' component={Contact} />
                     </div>
                 </Router>
+                <ShareButton/>
+            </div>
             </MuiThemeProvider>
+
+
         )
+
     }
 }
 
