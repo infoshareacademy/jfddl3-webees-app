@@ -30,16 +30,6 @@ class SideBar extends Component {
                             Lista biegów
                         </MenuItem>
                     </Link>
-                    <Link to="/favourites" style={styles.link}>
-                        <MenuItem onClick={this.props.toggleSideBarProps} style={styles.link}>
-                            Ulubione
-                        </MenuItem>
-                    </Link>
-                    <Link to="/contact" style={styles.link}>
-                        <MenuItem onClick={this.props.toggleSideBarProps} style={styles.link}>
-                            Kontakt
-                        </MenuItem>
-                    </Link>
                 </Drawer>
             </div>
         );
