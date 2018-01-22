@@ -4,7 +4,7 @@ import ListView from './ListView'
 
 
 class List extends React.Component {
-    state = {category: '', name: '', distance: ''};
+    state = {category: '', name: '', distance: 50};
 
     handleCategoryChange = (e, index, value) => this.setState({category: value});
 

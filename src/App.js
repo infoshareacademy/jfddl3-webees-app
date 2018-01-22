@@ -10,6 +10,7 @@ import Run from './Run';
 import Contact from './Contact';
 import AppBar from './AppBar';
 import SideBar from './SideBar';
+import ShareButton from './ShareButton'
 import styles from './styles'
 
 class App extends Component {
