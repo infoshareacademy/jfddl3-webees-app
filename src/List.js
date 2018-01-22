@@ -1,12 +1,32 @@
 import React from 'react'
-import WebeesPaper from './WebeesPaper'
+import ListSearch from './ListSearch'
+import ListView from './ListView'
 
-const List = () => (
-    <div>
-        <WebeesPaper>
-            <b>asdfghjkxrtdfyguhj</b>
-        </WebeesPaper>
-    </div>
-)
+
+class List extends React.Component {
+    state = {category: '', name: '', distance: ''};
+
+    handleCategoryChange = (e, index, value) => this.setState({category: value});
+
+    handleNameChange = (e, value) => this.setState({name: value});
+
+    handleDistanceChange = (e, value) => this.setState({distance: value});
+
+    render() {
+        return (
+            <div>
+                <ListSearch
+                    handleCategoryChange={this.handleCategoryChange}
+                    handleNameChange={this.handleNameChange}
+                    handleDistanceChange={this.handleDistanceChange}
+                    category={this.state.category}
+                />
+                <ListView
+                    searchParams={this.state}
+                />
+            </div>
+        )
+    }
+}
 
 export default List
