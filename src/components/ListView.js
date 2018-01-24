@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 import WebeesPaper from './WebeesPaper'
 import {GridList, GridTile} from 'material-ui/GridList';
-import {database} from "./firebase";
+import {database} from "../firebase";
 
 
 class ListView extends React.Component {
