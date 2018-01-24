@@ -1,16 +1,18 @@
-import React, {Component} from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import store from './store'
 
-import Dashboard from './Dashboard';
-import List from './List';
-import AddRun from './AddRun';
-import Favourites from './Favourites';
-import Run from './Run';
-import Contact from './Contact';
-import AppBar from './AppBar';
-import SideBar from './SideBar';
-import ShareButton from './ShareButton'
+import Dashboard from './components/Dashboard'
+import List from './components/List'
+import AddRun from './components/AddRun'
+import Favourites from './components/Favourites'
+import Run from './components/Run'
+import Contact from './components/Contact'
+import AppBar from './components/AppBar'
+import SideBar from './components/SideBar'
+import ShareButton from './components/ShareButton'
 import styles from './styles'
 
 class App extends Component {
@@ -24,6 +26,7 @@ class App extends Component {
 
     render() {
         return (
+            <Provider store={store}>
             <MuiThemeProvider>
                 <div>
                 <Router>
@@ -48,8 +51,7 @@ class App extends Component {
                 <ShareButton/>
             </div>
             </MuiThemeProvider>
-
-
+            </Provider>
         )
 
     }

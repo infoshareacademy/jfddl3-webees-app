@@ -3,7 +3,7 @@ import AddButton from './AddButton'
 import SelectField from './SelectField'
 import TextField from './TextField'
 import Map from './Map'
-import { database } from './firebase'
+import { database } from '../firebase'
 
 class AddRun extends React.Component {
     state = {

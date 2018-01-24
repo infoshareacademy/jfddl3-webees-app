@@ -1,6 +1,6 @@
 import React from 'react';
 import Map from "./Map";
-import {database} from './firebase'
+import {database} from '../firebase'
 import WebeesPaper from "./WebeesPaper";
 
 class Run extends React.Component {
