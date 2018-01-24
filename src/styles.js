@@ -1,47 +1,44 @@
-/*
-    ***** NASZA KOLORYSTYKA *****
-czerwony:       #BF352F, rgba(191,53,47,1)
-beżowy:         #FFD99B, rgba(255,217,155,1)
-jasnozielony:   #88A34F, rgba(136,163,79,1)
-ciemnozielony:  #224732, rgba(34,71,50,1)
-bardzo ciemny:  #132326, rgba(19,35,38,1)
+const webeesColors = {
+    red: '#BF352F',
+    beige: '#FFD99B',
+    green: '#88A34F',
+    darkGreen: '#224732',
+    dark: '#132326'
+}
 
-    ***** FONTS ***** 
-font-family: 'Quicksand', sans-serif;
-
-*/
+const webeesFont = "'Quicksand', sans-serif"
 
 export default {
     appBar: {
-        backgroundColor: '#132326',
+        backgroundColor: webeesColors.dark,
     },
     appBarTitle: {
-        color: '#FFD99B',
-        fontFamily: "'Quicksand', sans-serif",
+        color: webeesColors.beige,
+        fontFamily: webeesFont,
         fontSize: '1.75em'
     },
     appBarIcon: {
-        color: '#FFD99B'
+        color: webeesColors.beige
     },
     sideBar: {
-        backgroundColor: '#132326',
-        fontFamily: "'Quicksand', sans-serif",
+        backgroundColor: webeesColors.dark,
+        fontFamily: webeesFont,
         fontSize: '1.1em'
     },
     link: {
-        color: '#FFD99B',
-        fontFamily: "'Quicksand', sans-serif",
+        color: webeesColors.beige,
+        fontFamily: webeesFont,
         fontSize: '1em',
         textDecoration: 'none'
     },
     paper: {
-        color: '#132326',
-        fontFamily: "'Quicksand', sans-serif",
+        color: webeesColors.dark,
+        fontFamily: webeesFont,
         fontSize: '1em'
     },
     textField: {
-        color: '#132326',
-        fontFamily: "'Quicksand', sans-serif",
+        color: webeesColors.dark,
+        fontFamily: webeesFont,
         fontSize: '1em'
     }
 }
