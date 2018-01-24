@@ -21,36 +21,39 @@ class App extends Component {
     }
 
     toggleSideBar = () => (
-        this.setState({ isSideBarOpenState: !this.state.isSideBarOpenState })
+        this.setState({isSideBarOpenState: !this.state.isSideBarOpenState})
     )
 
     render() {
         return (
             <Provider store={store}>
-                <MuiThemeProvider>
+            <MuiThemeProvider>
+                <div>
+                <Router>
                     <div>
-                        <Router>
-                            <div>
-                                <AppBar
-                                    onMenuClickProps={this.toggleSideBar}
+                        <AppBar
+                            onMenuClickProps={this.toggleSideBar}
 
-                                />
-                                <SideBar
-                                    isSideBarOpenProps={this.state.isSideBarOpenState}
-                                    toggleSideBarProps={this.toggleSideBar}
-                                />
+                        />
+                        <SideBar
+                            isSideBarOpenProps={this.state.isSideBarOpenState}
+                            toggleSideBarProps = {this.toggleSideBar}
+                        />
 
-                                <Route path='/' component={Dashboard} exact={true} />
-                                <Route path='/list' component={List} />
-                                <Route path='/add-run' component={AddRun} />
-                                <Route path='/run' component={Run} />
-                            </div>
-                        </Router>
-                        <ShareButton />
+                        <Route path='/' component={Dashboard} exact={true} />
+                        <Route path='/list' component={List} />
+                        <Route path='/add-run' component={AddRun} />
+                        <Route path='/favourites' component={Favourites} />
+                        <Route path='/run/:id' component={Run}/>
+                        <Route path='/contact' component={Contact} />
                     </div>
-                </MuiThemeProvider>
+                </Router>
+                <ShareButton/>
+            </div>
+            </MuiThemeProvider>
             </Provider>
         )
+
     }
 }
 
