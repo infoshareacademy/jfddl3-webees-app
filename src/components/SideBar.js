@@ -15,7 +15,7 @@ class SideBar extends Component {
                     onRequestChange={this.props.toggleSideBarProps}
                     containerStyle={styles.sideBar}
                 >
-                    <Link to="/dashboard" style={styles.link}>
+                    <Link to="/" style={styles.link}>
                         <MenuItem onClick={this.props.toggleSideBarProps} style={styles.link}>
                             Dashboard
                         </MenuItem>
