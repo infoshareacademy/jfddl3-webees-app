@@ -1,20 +1,26 @@
 import React, { Component } from 'react'
 import AddButton from './AddButton'
-import SelectField from './SelectField'
+import { RunCategorySelect, RunnersCountSelect } from './SelectField'
 import TextField from './TextField'
 import Map from './Map'
 import { database } from '../firebase'
+
+import styles from '../styles'
 
 class AddRun extends React.Component {
     state = {
         markers: [],
         distance: 0,
         name: '',
-        category: 'city'
+        category: 'city',
+        runners: 20
     }
 
-    selectChange = (event, index, value) => { this.setState({ category: value }); console.log(value) };
-    textFieldChange = (event, value) => { this.setState({ name: value }); console.log(value) };
+    runCategoryChange = (event, index, value) => this.setState({ category: value })
+
+    textFieldChange = (event, value) => this.setState({ name: value })
+
+    runnersCountChange = (event, index, value) => this.setState({ runners: value })
 
     getData = () => {
         database.ref('/runs/').once('value')
@@ -31,9 +37,6 @@ class AddRun extends React.Component {
         this.setState({
             markers: this.state.markers.concat(markerData),
             distance: this.getDistanceFromLatLonInKm(this.state.markers.concat(markerData))
-        }, () => {
-            console.dir(this.state.markers);
-            console.dir(this.state.distance);
         })
     }
 
@@ -57,7 +60,6 @@ class AddRun extends React.Component {
         return runDistance
     }
 
-
     saveRun = () => {
         const listDbRef = database.ref('/runs/')
         listDbRef.push(this.state)
@@ -71,33 +73,37 @@ class AddRun extends React.Component {
     }
 
     render() {
-
         return (
-            <div style={{ margin: '10px', fontFamily: 'Quicksand', fontSize: '1.5em', color: '#132326' }}>
-                <div style={{ margin: '1em'}}>Dodaj nowy bieg!</div>
+            <div style={styles.addRunContainer}>
+                <div>Dodaj nowy bieg!</div>
                 <div
-                    style={{ border: '1px solid black', width: '50vw', height: '50vh' }}
+                    style={{ border: '1px solid black', width: '50vw', height: '50vh'}}
                 >
                     <Map
                         center={{ lat: 51.216276, lng: 22.631233 }}
                         zoom={15}
                         markers={this.state.markers}
                         placeMarker={this.placeMarker}
-                    // 
-
                     />
                 </div>
-                <TextField
-                    name={this.state.name}
-                    onTextFieldChange={this.textFieldChange}
-                />
-                <SelectField
-                    category={this.state.category}
-                    onSelectChange={this.selectChange}
-                />
-                <AddButton
-                    onBtnClick={this.saveRun}
-                />
+                <div>
+                    <TextField
+                        name={this.state.name}
+                        onTextFieldChange={this.textFieldChange}
+                    />
+                    <RunCategorySelect
+                        category={this.state.category}
+                        onSelectChange={this.runCategoryChange}
+                    />
+                    <RunnersCountSelect
+                        runners={this.state.runners}
+                        onSelectChange={this.runnersCountChange}
+                    />
+                    <br />
+                    <AddButton
+                        onBtnClick={this.saveRun}
+                    />
+                </div>
             </div>
         )
     }

@@ -31,6 +31,12 @@ export default {
         fontSize: '1em',
         textDecoration: 'none'
     },
+    addRunContainer: {
+        margin: '10px',
+        fontFamily: webeesFont,
+        fontSize: '1.5em',
+        color: webeesColors.dark,
+    },
     paper: {
         color: webeesColors.dark,
         fontFamily: webeesFont,
