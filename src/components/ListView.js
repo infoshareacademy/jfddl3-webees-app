@@ -57,7 +57,7 @@ class ListView extends React.Component {
                                         to={'/run/' + run.key}
                                     >
                                         <GridTile
-                                            title={run.name}
+                                            title={run.name + ' - ' + Math.round(run.distance * 1000) / 1000 + ' km'}
                                         >
                                             <img src={`${process.env.PUBLIC_URL}/img/run-google-map.jpg`}/>
                                         </GridTile>
