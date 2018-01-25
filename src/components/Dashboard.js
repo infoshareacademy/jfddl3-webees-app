@@ -1,7 +1,8 @@
 import React from 'react';
 import NewBarChart from './BarChart'
 import PieChart from './PieChart'
-import ReLineChart from './ReLineChart'
+import NeuBarChart from './NeuBarChart'
+
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import WebeesPaper from "./WebeesPaper";
 
@@ -17,7 +18,7 @@ const Dashboard = () => (
                         <NewBarChart/>
                     </Col>
                     <Col xs={12} md={6} lg={4}>
-                        <ReLineChart/>
+
                     </Col>
                 </Row>
             </Grid>

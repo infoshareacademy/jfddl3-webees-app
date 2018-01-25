@@ -17,11 +17,12 @@ const NewBarChart = () => {
         <BarChart width={350} height={350} data={data}>
             <Bar dataKey='uv' fill='#8884d8'/>
             <Bar dataKey='pv' fill='red'/>
+            label={({payload}) =>`${payload.name} - ${payload.uv} km `}
+            labelLine={true}
         </BarChart>
         </div>
     )
 };
 
 
-
-export default NewBarChart;
+export default NewBarChart

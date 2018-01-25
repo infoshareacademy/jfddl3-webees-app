@@ -6,7 +6,7 @@ import { PieChart as RePieChart, Pie, Tooltip }  from 'recharts'
 const data = [
     {
         value: 10,
-        name: 'Fellin',
+        name: 'Felin',
         fill:'lime'
 
     },
@@ -38,11 +38,15 @@ const PieChart = () => (
                 dataKey="value"
                 nameKey="name"
                 fill='blue'
+                label={({payload}) =>`${payload.name} - ${payload.value} km `}
+                labelLine={true}
             />
             <Tooltip/>
         </RePieChart>
         </div>
     </div>
 );
+
+
 
 export default PieChart;
