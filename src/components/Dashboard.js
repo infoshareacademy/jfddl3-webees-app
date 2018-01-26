@@ -1,7 +1,6 @@
 import React from 'react';
 import NewBarChart from './BarChart'
 import PieChart from './PieChart'
-import NeuBarChart from './NeuBarChart'
 
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import WebeesPaper from "./WebeesPaper";
