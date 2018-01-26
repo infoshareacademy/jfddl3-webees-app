@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AddButton from './AddButton'
 import { RunCategorySelect, RunnersCountSelect } from './SelectField'
-import TextField from './TextField'
+import TextField from 'material-ui/TextField'
 import Map from './Map'
 import { database } from '../firebase'
 
@@ -18,7 +18,7 @@ class AddRun extends React.Component {
 
     runCategoryChange = (event, index, value) => this.setState({ category: value })
 
-    textFieldChange = (event, value) => this.setState({ name: value })
+    runNameChange = (event, value) => this.setState({ name: value })
 
     runnersCountChange = (event, index, value) => this.setState({ runners: value })
 
@@ -37,6 +37,13 @@ class AddRun extends React.Component {
         this.setState({
             markers: this.state.markers.concat(markerData),
             distance: this.getDistanceFromLatLonInKm(this.state.markers.concat(markerData))
+        })
+    }
+
+    markerDescriptionChange = (index, value) => {
+        let newMarkers = this.state.markers.map((marker, i) => i === index ? { ...marker, desc: value } : marker)
+        this.setState({
+            markers: newMarkers
         })
     }
 
@@ -74,39 +81,53 @@ class AddRun extends React.Component {
 
     render() {
         return (
-            <div style={styles.addRunContainer}>
-                <div>Dodaj nowy bieg!</div>
-                <div
-                    style={{ border: '1px solid black', width: '50vw', height: '50vh'}}
-                >
-                    <Map
-                        center={{ lat: 51.216276, lng: 22.631233 }}
-                        zoom={15}
-                        markers={this.state.markers}
-                        placeMarker={this.placeMarker}
-                    />
+            <div>
+                <div style={styles.addRunContainer}>
+                    <div style={styles.mapContainer}>
+                        <div style={{ margin: '10px 0' }}>Dodaj nowy bieg!</div>
+                        <div
+                            style={{ border: '1px solid black', width: '50vw', height: '50vh' }}
+                        >
+                            <Map
+                                center={{ lat: 51.216276, lng: 22.631233 }}
+                                zoom={15}
+                                markers={this.state.markers}
+                                placeMarker={this.placeMarker}
+                            />
+
+                        </div>
+                    </div>
+                    <div>
+                        <TextField
+                            floatingLabelText={'Nazwa biegu'}
+                            value={this.state.name}
+                            onChange={this.runNameChange}
+                        />
+                        <RunCategorySelect
+                            category={this.state.category}
+                            onSelectChange={this.runCategoryChange}
+                        />
+                        <RunnersCountSelect
+                            runners={this.state.runners}
+                            onSelectChange={this.runnersCountChange}
+                        />
+                        <br />
+                        <AddButton
+                            onBtnClick={this.saveRun}
+                        />
+                    </div>
                 </div>
-                <div>
-                    <TextField
-                        name={this.state.name}
-                        onTextFieldChange={this.textFieldChange}
-                    />
-                    <RunCategorySelect
-                        category={this.state.category}
-                        onSelectChange={this.runCategoryChange}
-                    />
-                    <RunnersCountSelect
-                        runners={this.state.runners}
-                        onSelectChange={this.runnersCountChange}
-                    />
-                    <br />
-                    <AddButton
-                        onBtnClick={this.saveRun}
-                    />
+                <div style={styles.markerDescriptionContainer}>
+                    {this.state.markers.map((marker, index) => (
+                        <TextField
+                            floatingLabelText={`Opis punktu nr ${index + 1}`}
+                            onChange={(e, value) => this.markerDescriptionChange(index, value)}
+                        />
+                    ))}
                 </div>
             </div>
         )
     }
 }
 
-export default AddRun;
+export default AddRun

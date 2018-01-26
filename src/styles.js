@@ -32,10 +32,21 @@ export default {
         textDecoration: 'none'
     },
     addRunContainer: {
+        display: 'flex',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        flexWrap: 'wrap',
         margin: '10px',
         fontFamily: webeesFont,
         fontSize: '1.5em',
-        color: webeesColors.dark,
+        color: webeesColors.dark
+    },
+    mapContainer: {
+    },
+    markerDescriptionContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
     },
     paper: {
         color: webeesColors.dark,
