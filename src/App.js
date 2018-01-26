@@ -14,7 +14,7 @@ import AppBar from './components/AppBar'
 import SideBar from './components/SideBar'
 import ShareButton from './components/ShareButton'
 import styles from './styles'
-import LogIn from './components/Login'
+import Login from './components/Login'
 
 class App extends Component {
     state = {

@@ -1,11 +1,36 @@
 import React from 'react'
+import Login from './Login'
 
 
-const LogIn = () => {
+class Login extends React.Component {
+    state = {
+        loginEmail: '',
+        loginPassword: '',
+    }
+    render() {
+        return (
+            <div>
+                <Login
+                    onEmailChange={() => {}}
+                    onPasswordChange={() => {}}
+                />
 
+            </div>
+        )
+    }
+
+}
+
+const mapStateToProps = state => {
+
+}
+
+const mapDispatchToProps = dispatch => {
 
 }
 
 
-
-export default LogIn
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Login)
