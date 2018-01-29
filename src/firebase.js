@@ -8,6 +8,8 @@ const config = {
     storageBucket: "isa-webees.appspot.com",
     messagingSenderId: "807574041673"
 }
+
+
 firebase.initializeApp(config)
 
 export const database = firebase.database()

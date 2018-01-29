@@ -1,8 +1,6 @@
 import React from 'react';
 import { PieChart as RePieChart, Pie, Tooltip }  from 'recharts'
 
-
-
 const data = [
     {
         value: 10,
