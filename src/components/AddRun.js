@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import AddButton from './AddButton'
+import RaisedButton from 'material-ui/RaisedButton'
 import { RunCategorySelect, RunnersCountSelect } from './SelectField'
 import TextField from 'material-ui/TextField'
 import Map from './Map'
-import { database } from '../firebase'
+// import { database } from '../firebase'
+import { addRun } from '../state/runs'
+import { connect } from 'react-redux'
 
 import styles from '../styles'
 
@@ -22,15 +24,15 @@ class AddRun extends React.Component {
 
     runnersCountChange = (event, index, value) => this.setState({ runners: value })
 
-    getData = () => {
-        database.ref('/runs/').once('value')
-            .then(snapshot => {
-                const dataFromDb = snapshot.val()
-                this.setState({
-                    // state: dataFromDb
-                })
-            })
-    }
+    // getData = () => {
+    //     database.ref('/runs/').once('value')
+    //         .then(snapshot => {
+    //             const dataFromDb = snapshot.val()
+    //             this.setState({
+    //                 // state: dataFromDb
+    //             })
+    //         })
+    // }
 
     placeMarker = ({ lat, lng }) => {
         const markerData = { lat, lng, key: Date.now() }
@@ -68,10 +70,8 @@ class AddRun extends React.Component {
     }
 
     saveRun = () => {
-        const listDbRef = database.ref('/runs/')
-        listDbRef.push(this.state)
-            .then(() => console.log('saved'))
-            .catch(() => console.log('error!'));
+        console.log(this.state)
+        this.props.addRun(this.state)
         this.setState({
             markers: [],
             name: '',
@@ -94,7 +94,6 @@ class AddRun extends React.Component {
                                 markers={this.state.markers}
                                 placeMarker={this.placeMarker}
                             />
-
                         </div>
                     </div>
                     <div>
@@ -112,8 +111,9 @@ class AddRun extends React.Component {
                             onSelectChange={this.runnersCountChange}
                         />
                         <br />
-                        <AddButton
-                            onBtnClick={this.saveRun}
+                        <RaisedButton
+                            label={'Dodaj bieg'}
+                            onClick={this.saveRun}
                         />
                     </div>
                 </div>
@@ -130,4 +130,11 @@ class AddRun extends React.Component {
     }
 }
 
-export default AddRun
+const mapDispatchToProps = (dispatch) => ({
+    addRun: (dataToSave) => dispatch(addRun(dataToSave))
+})
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(AddRun)

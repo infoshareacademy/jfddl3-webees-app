@@ -9,6 +9,13 @@ const setRunsData = data => ({
     data
 })
 
+export const addRun = dataToSave => (dispatch, getState) => {
+    console.log(dataToSave)
+    dbRef.push(dataToSave)
+        .then(() => console.log('saved'))
+        .catch(() => console.log('error!'))
+}
+
 export const initRunsSync = () => (dispatch, getState) => {
     dbRef.on('value', snapshot => {
         const runFromDataBase = Object.entries(snapshot.val())
