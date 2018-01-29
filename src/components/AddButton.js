@@ -1,24 +1,6 @@
-import React from 'react';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+import React from 'react'
+import RaisedButton from 'material-ui/RaisedButton'
 
-const style = {
-    marginRight: 20,
-};
+const RaisedButtonExampleSimple = () => (<RaisedButton label="Dodaj bieg" />)
 
-/**
- * Default size and `mini` FABs, in primary (default), `secondary` and `disabled` colors.
- */
-const FloatingActionButtonExampleSimple = (props) => (
-    <div>
-        <FloatingActionButton
-            mini={true}
-            style={style}
-            onClick={props.onBtnClick}
-        >
-            <ContentAdd />
-        </FloatingActionButton>
-    </div>
-);
-
-export default FloatingActionButtonExampleSimple;
+export default RaisedButtonExampleSimple
