@@ -24,8 +24,8 @@ class ListView extends React.Component {
             })
         }
 
-        var dbRef = database.ref('/runs');
-        dbRef.once('value', snapshot => {
+        var dbRef = database.ref('/runs')
+        dbRef.on('value', snapshot => {
             const runFromDataBase = Object.entries(snapshot.val())
                 .map(([key, val]) => {
                     val.key = key
@@ -33,6 +33,11 @@ class ListView extends React.Component {
                 })
             this.setState({runs: runFromDataBase})
         })
+    }
+
+    componentWillUnmount() {
+        var dbRef = database.ref('/runs')
+        dbRef.off('value')
     }
 
     polishSignsConversion = letter => {
