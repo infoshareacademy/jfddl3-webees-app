@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 
 import chartsReducer from './state/charts'
 import authReducer from './state/auth'
-import runsReducer from './state/runs'
+import runsReducer, { initRunsSync } from './state/runs'
 
 const reducer = combineReducers({
     runs: runsReducer,
@@ -19,5 +19,7 @@ const store = createStore(
         applyMiddleware(thunk)
     )
 )
+
+store.dispatch(initRunsSync())
 
 export default store
