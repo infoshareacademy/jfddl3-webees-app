@@ -3,7 +3,20 @@ import {Link} from 'react-router-dom';
 import WebeesPaper from './WebeesPaper'
 import {GridList, GridTile} from 'material-ui/GridList';
 import {database} from "../firebase";
+import {connect} from 'react-redux'
 
+const styles = {
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+    },
+    gridList: {
+        width: '100%',
+        height: 450,
+        overflowY: 'auto',
+    }
+};
 
 class ListView extends React.Component {
     state = {
@@ -23,16 +36,6 @@ class ListView extends React.Component {
                 cols: 4
             })
         }
-
-        var dbRef = database.ref('/runs');
-        dbRef.once('value', snapshot => {
-            const runFromDataBase = Object.entries(snapshot.val())
-                .map(([key, val]) => {
-                    val.key = key
-                    return val
-                })
-            this.setState({runs: runFromDataBase})
-        })
     }
 
     polishSignsConversion = letter => {
@@ -63,7 +66,6 @@ class ListView extends React.Component {
     lowercaseEnglishSigns = name => (name.toLowerCase().split('').map(this.polishSignsConversion).join(''))
 
     render() {
-        // console.log(this.state.runs)
         console.log(this.props.searchParams.distance)
         return (
             <div>
@@ -74,9 +76,9 @@ class ListView extends React.Component {
                             style={styles.gridList}
                             cols={this.state.cols}
                         >
-                            {this.state.runs
+                            {this.props.runs
                             &&
-                            this.state.runs
+                            this.props.runs
                                 .filter(run => this.props.searchParams.category === '' ?
                                     true
                                     :
@@ -107,18 +109,11 @@ class ListView extends React.Component {
 
 }
 
-const styles = {
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-    },
-    gridList: {
-        width: '100%',
-        height: 450,
-        overflowY: 'auto',
-    }
-};
+const mapStateToProps = state => ({
+    runs: state.runs.data
+})
 
-export default ListView
+export default connect(
+    mapStateToProps
+)(ListView)
 
