@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 import { RunCategorySelect, RunnersCountSelect } from './SelectField'
 import TextField from 'material-ui/TextField'
-import Map from './Map'
+import RunSnackBar from './SnackBar'
+import Map from './AddRunMap'
 // import { database } from '../firebase'
 import { addRun } from '../state/runs'
 import { connect } from 'react-redux'
@@ -43,9 +44,9 @@ class AddRun extends React.Component {
     }
 
     markerDescriptionChange = (index, value) => {
-        let newMarkers = this.state.markers.map((marker, i) => i === index ? { ...marker, desc: value } : marker)
+        let markersWithDescription = this.state.markers.map((marker, i) => i === index ? { ...marker, description: value } : marker)
         this.setState({
-            markers: newMarkers
+            markers: markersWithDescription
         })
     }
 
@@ -111,9 +112,8 @@ class AddRun extends React.Component {
                             onSelectChange={this.runnersCountChange}
                         />
                         <br />
-                        <RaisedButton
-                            label={'Dodaj bieg'}
-                            onClick={this.saveRun}
+                        <RunSnackBar
+                            saveRun={this.saveRun}
                         />
                     </div>
                 </div>
