@@ -1,8 +1,6 @@
 import React from 'react'
 import {LineChart, XAxis, Tooltip, CartesianGrid, Line} from 'recharts'
 
-
-
 const data = [
     {name: '0km', Miest: 0, Las: 0},
     {name: '5km', Miasto: 1000, Las: 500},

@@ -13,6 +13,11 @@ import SideBar from './components/SideBar'
 import ShareButton from './components/ShareButton'
 import styles from './styles'
 
+import NewBarChart from './components/NewBarChart'
+import PieChart from './components/PieChart'
+import ReLineChart from './components/ReLineChart'
+
+
 class App extends Component {
     state = {
         isSideBarOpenState: false
