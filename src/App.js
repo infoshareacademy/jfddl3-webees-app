@@ -14,7 +14,9 @@ import AppBar from './components/AppBar'
 import SideBar from './components/SideBar'
 import ShareButton from './components/ShareButton'
 import styles from './styles'
-import Login from './components/Login'
+import LogIn from './components/LogIn'
+import Auth from './components/Auth'
+
 
 class App extends Component {
     state = {
@@ -29,7 +31,7 @@ class App extends Component {
         return (
             <Provider store={store}>
             <MuiThemeProvider>
-                <div>
+                <Auth>
                 <Router>
                     <div>
                         <AppBar
@@ -50,7 +52,7 @@ class App extends Component {
                     </div>
                 </Router>
                 <ShareButton/>
-            </div>
+                </Auth>
             </MuiThemeProvider>
             </Provider>
         )

@@ -15,7 +15,6 @@ const setLoginLogs = (logs) => ({
 
 export const initAuth = () => (dispatch, getState) => {
     auth.onAuthStateChanged((user) => {
-        // if not logged in user is null !
         dispatch(setUser(user))
 
         if (user) {
@@ -37,7 +36,7 @@ const logLoginDate = () => (dispatch, getState) => {
     database.ref(`/users/${uid}/loginLogs`)
         .push({timestamp: Date.now()})
         .then(() => console.log('login date successfully logged in db'))
-        .catch(() => console.log('zjebalas to kasia'))
+        .catch(() => console.log('logowanie nieudane'))
 }
 
 export const logIn = (email, password) => (dispatch, getState) => {
