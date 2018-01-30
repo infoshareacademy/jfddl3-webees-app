@@ -1,12 +1,26 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
 
-const Pin = props => (
-    <div>
-        <i className="material-icons" style={{ color: 'red' }}>room</i>
-        {props.index + 1}
-    </div>
-)
+class Pin extends React.Component {
+    state = {
+        isDescVisible: false
+    }
+
+    toggleDescVisibility = () => {
+        this.setState({
+            isDescVisible: !this.state.isDescVisible
+        })
+    }
+
+    render() {
+        return (
+            <div onClick={this.toggleDescVisibility}>
+                <i className="material-icons" style={{color: 'red'}}>room</i>
+                {`${this.props.index + 1}: ${this.state.isDescVisible ? this.props.description : ''}`}
+            </div>
+        )
+    }
+}
 
 class Map extends React.Component {
     render() {
@@ -24,6 +38,7 @@ class Map extends React.Component {
                             lat={marker.lat}
                             lng={marker.lng}
                             index={index}
+                            description={marker.description || ''}
                         />
                     )
                 }
