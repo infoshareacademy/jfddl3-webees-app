@@ -10,7 +10,10 @@ import {connect} from 'react-redux'
 
 const Dashboard = (props) => {
     // start
-    console.log(props.runnersData)
+    console.log(props.runData)
+    const newArr = props.runData.filter(run => run.category === 'city')
+    console.log(newArr)
+    console.log(newArr.length)
     // stop
     return (
         <WebeesPaper>
@@ -35,7 +38,7 @@ const Dashboard = (props) => {
 
 
 const mapStateToProps = state => ({
-    runnersData: state.runs.data
+    runData: state.runs.data
 })
 
 export default connect(
