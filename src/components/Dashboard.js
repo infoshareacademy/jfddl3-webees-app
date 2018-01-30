@@ -14,6 +14,9 @@ const Dashboard = (props) => {
     const newArr = props.runData.filter(run => run.category === 'city')
     console.log(newArr)
     console.log(newArr.length)
+    const newArr1 = props.runData.filter(run => run.category === 'forest')
+    console.log(newArr1)
+    console.log(newArr1.length)
     // stop
     return (
         <WebeesPaper>
