@@ -37,7 +37,7 @@ const logLoginDate = () => (dispatch, getState) => {
     database.ref(`/users/${uid}/loginLogs`)
         .push({timestamp: Date.now()})
         .then(() => console.log('login date successfully logged in db'))
-        .catch(() => console.log('zjebalas to kasia'))
+        .catch(() => console.log('Something wrong!'))
 }
 
 export const logIn = (email, password) => (dispatch, getState) => {
@@ -55,14 +55,14 @@ export const logInByGoogle = () => (dispatch, getState) => {
 export const createUser = (email, password) => (dispatch, getState) => {
     auth.createUserWithEmailAndPassword(email, password)
         .then(() => console.log('User created'))
-        .catch(() => alert('Something wrong!'))
+        .catch((e) => console.log(e))
 }
 
 
 export const logOut = () => (dispatch, getState) => {
     auth.signOut()
         .then(() => console.log('Log out'))
-        .catch(() => alert('something wrong'))
+        .catch(() => alert('Something wrong!'))
 }
 
 
