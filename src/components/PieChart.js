@@ -1,35 +1,19 @@
 import React from 'react';
 import { PieChart as RePieChart, Pie, Tooltip }  from 'recharts'
-import {userData} from './Dashboard'
-
-const data = [
-    {
-        value: 13,
-        name: 'forest',
-        fill:'lime'
-
-    },
-    {
-        value: 3,
-        name: 'city',
-        fill:'red'
-
-    }
-    ]
 
 
-const PieChart = () => (
+const PieChart = (props) => (
     <div id="root">
         <div>
-            <h2>Ilość tras biegowych</h2>
-        <RePieChart width={400} height={400}>
+            <h2>Rodzaje tras biegowych</h2>
+        <RePieChart width={600} height={600}>
 
             <Pie
-                data={data}
+                data={props.data}
                 dataKey="value"
                 nameKey="name"
                 fill='blue'
-                label={({payload}) =>`${payload.name} - ${payload.value} km `}
+                label={({payload}) =>`${payload.name} - ${payload.value} km`}
                 labelLine={true}
             />
             <Tooltip/>

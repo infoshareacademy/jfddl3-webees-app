@@ -2,23 +2,30 @@ import React from 'react';
 import NewBarChart from './NewBarChart'
 import PieChart from './PieChart'
 import ReLineChart from './ReLineChart'
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import {Grid, Row, Col} from 'react-flexbox-grid';
 import WebeesPaper from './WebeesPaper';
 
 import {connect} from 'react-redux'
 
-
 const Dashboard = (props) => {
-    // start
-    console.log(props.runData)
-    const newArr = props.runData.filter(run => run.category === 'city')
-    console.log(newArr)
-    console.log(newArr.length)
-    const newArr1 = props.runData.filter(run => run.category === 'forest')
-    console.log(newArr1)
-    console.log(newArr1.length)
-    // stop
+    const cityRuns = props.runData.filter(run => run.category === 'city')
+    const cityRunsLength = cityRuns.length
+    const forestRun = props.runData.filter(run => run.category === 'forest')
+    const forestRunLength = forestRun.length
 
+    const pieChartData = [
+        {
+            value: forestRunLength,
+            name: 'forest',
+            fill: 'lime'
+
+        },
+        {
+            value: cityRunsLength,
+            name: 'city',
+            fill: 'red'
+        }
+    ]
 
     return (
         <WebeesPaper>
@@ -26,7 +33,9 @@ const Dashboard = (props) => {
                 <Grid>
                     <Row>
                         <Col xs={12} md={6} lg={4}>
-                            <PieChart/>
+                            <PieChart
+                                data={pieChartData}
+                            />
                         </Col>
                         <Col xs={12} md={6} lg={4}>
                             <NewBarChart/>
