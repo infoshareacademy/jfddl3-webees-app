@@ -12,6 +12,10 @@ export default class SnackbarExampleSimple extends React.Component {
     }
 
     handleClick = () => {
+        if (!this.props.addCheck) {
+            alert('Add name and minimum two markers!')
+            return
+        }
         this.props.saveRun()
         this.setState({
             open: true

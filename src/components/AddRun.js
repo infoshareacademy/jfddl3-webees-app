@@ -71,7 +71,6 @@ class AddRun extends React.Component {
     }
 
     saveRun = () => {
-        console.log(this.state)
         this.props.addRun(this.state)
         this.setState({
             markers: [],
@@ -96,6 +95,12 @@ class AddRun extends React.Component {
                                 placeMarker={this.placeMarker}
                             />
                         </div>
+                        <div>
+                            {this.state.distance ?
+                                `Długość biegu: ${this.state.distance.toFixed(3)} km`
+                                :
+                                'Dodaj minimum 2 punkty'}
+                        </div>
                     </div>
                     <div>
                         <TextField
@@ -114,6 +119,7 @@ class AddRun extends React.Component {
                         <br />
                         <RunSnackBar
                             saveRun={this.saveRun}
+                            addCheck={(this.state.markers.length > 1 && this.state.name)}
                         />
                     </div>
                 </div>
