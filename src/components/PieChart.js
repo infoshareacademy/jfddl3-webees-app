@@ -3,32 +3,20 @@ import { PieChart as RePieChart, Pie, Tooltip }  from 'recharts'
 
 const data = [
     {
-        value: 10,
-        name: 'Fellin',
+        value: 13,
+        name: 'forest',
         fill:'lime'
-
+    },{
+        value: 3,
+        name: 'city',
+        fill:'red'
     },
-    {
-        value: 20,
-        name: 'Stare Miasto',
-        fill:'yellow'
-    },
-    {
-        value: 20,
-        name: 'Park Ludowy',
-        fill:'green'
-    },
-    {
-        value: 15,
-        name: 'Ogród Saski'
-    }
-
-]
+    ]
 
 const PieChart = () => (
     <div id="root">
         <div>
-            <h2>Najpopularniejsze trasy</h2>
+            <h2>Ilość tras biegowych</h2>
         <RePieChart width={400} height={400}>
 
             <Pie
@@ -36,6 +24,8 @@ const PieChart = () => (
                 dataKey="value"
                 nameKey="name"
                 fill='blue'
+                label={({payload}) =>`${payload.name} - ${payload.value} % `}
+                labelLine={true}
             />
             <Tooltip/>
         </RePieChart>
