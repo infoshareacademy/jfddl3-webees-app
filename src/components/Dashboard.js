@@ -13,13 +13,12 @@ const Dashboard = (props) => {
     const forestRun = props.runData.filter(run => run.category === 'forest')
     const forestRunLength = forestRun.length
 
-    const pieChartData = [
-        {
-            value: forestRunLength,
-            name: 'forest',
-            fill: 'lime'
+    const pieChartData = [{
+        value: forestRunLength,
+        name: 'forest',
+        fill: 'lime'
 
-        },
+    },
         {
             value: cityRunsLength,
             name: 'city',
@@ -32,17 +31,16 @@ const Dashboard = (props) => {
             <div>
                 <Grid>
                     <Row>
-                        <Col xs={12} md={6} lg={4}>
+                        <Col class="col-xs-9 col-md-6 col-lg-4" >
                             <PieChart
                                 data={pieChartData}
                             />
                         </Col>
-                        <Col xs={12} md={6} lg={4}>
-                            <NewBarChart/>
+                        <Col class ="col-xs-9 col-md-6 col-lg-4" >
+                            <NewBarChart
+                            />
                         </Col>
-                        <Col xs={12} md={6} lg={4}>
-                            <ReLineChart/>
-                        </Col>
+
                     </Row>
                 </Grid>
             </div>
