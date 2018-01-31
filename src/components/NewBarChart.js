@@ -1,27 +1,51 @@
 import React from 'react';
-import {BarChart, Bar} from 'recharts';
-
+import {render} from 'react-dom'
+import {BarChart, CartesianGrid, XAxis, YAxis, Bar} from 'recharts';
 
 const data = [
-      {name: 'Dystans_1', uv: 1500, pv: 2400, amt: 2400},
-      {name: 'Dystans_2', uv: 2000, pv: 9800, amt: 2290},
-      {name: 'Dystans_3', uv: 2780, pv: 3908, amt: 2000},
-      {name: 'Dystans_4', uv: 1890, pv: 4800, amt: 2181},
-      {name: 'Dystans_5', uv: 1600, pv: 4000, amt: 2300},
-];
+    {
+        time: "MON",
+        users: 1,
+    },
+    {
+        time: "TUE",
+        users: 2,
+    },{
+        time: "WED",
+        users: 5,
+    },
+    {
+        time: "THUR",
+        users: 4,
+    },
+    {
+        time: "FRI",
+        users: 8,
+    }
+    ,
+    {
+        time: "SAT",
+        users: 4,
+    },
+    {
+        time: "SUN",
+        users: 10,
+    }
+]
 
-const NewBarChart = () => {
-    return (
-        <div>
-            <h2>Dystans pokonanych odleglosci</h2>
-        <BarChart width={350} height={350} data={data}>
-            <Bar dataKey='uv' fill='#8884d8'/>
-            <Bar dataKey='pv' fill='red'/>
+const NewBarChart = () => (
+    <div>
+        <h2>Ilość zalogowanych użytkowników</h2>
+    <div style={{width: '100vw', height: '100vh'}}>
+        <BarChart width={400} height={400} data={data}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="time" />
+            <YAxis />
+            <Bar label={true} dataKey="users" fill="red" />
         </BarChart>
-        </div>
-    )
-};
-
+    </div>
+    </div>
+);
 
 
 export default NewBarChart;

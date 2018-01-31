@@ -1,5 +1,6 @@
 import React from 'react';
 import { PieChart as RePieChart, Pie, Tooltip }  from 'recharts'
+import {userData} from './Dashboard'
 
 const data = [
     {
@@ -13,7 +14,7 @@ const data = [
         name: 'city',
         fill:'red'
 
-    },
+    }
     ]
 
 
