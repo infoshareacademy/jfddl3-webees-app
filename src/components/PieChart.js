@@ -6,12 +6,16 @@ const data = [
         value: 13,
         name: 'forest',
         fill:'lime'
-    },{
+
+    },
+    {
         value: 3,
         name: 'city',
         fill:'red'
+
     },
     ]
+
 
 const PieChart = () => (
     <div id="root">
@@ -24,7 +28,7 @@ const PieChart = () => (
                 dataKey="value"
                 nameKey="name"
                 fill='blue'
-                label={({payload}) =>`${payload.name} - ${payload.value} % `}
+                label={({payload}) =>`${payload.name} - ${payload.value} km `}
                 labelLine={true}
             />
             <Tooltip/>
@@ -32,5 +36,7 @@ const PieChart = () => (
         </div>
     </div>
 );
+
+
 
 export default PieChart;
