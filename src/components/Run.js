@@ -2,10 +2,13 @@ import React from 'react';
 import Map from "./Map";
 import {database} from '../firebase'
 import WebeesPaper from "./WebeesPaper";
+import RaisedButton from 'material-ui/RaisedButton';
+
 
 class Run extends React.Component {
     state = {
-        markers: []
+        markers: [],
+        signedRunners: [{uid: 'uid', email: 'a@a.pl'}]
     }
 
     componentWillMount() {
@@ -13,6 +16,7 @@ class Run extends React.Component {
     }
 
     getRun = () => {
+        // TODO get this data from redux
         database.ref(`/runs/${this.props.match.params.id}`)
             .once('value', (snapshot) => {
                 console.log(snapshot.val())
@@ -21,7 +25,18 @@ class Run extends React.Component {
             })
     }
 
+    handleAddRunner = () => this.setState({
+        signedRunners: [{uid: 'sdfghgj', email: 'afgh@a.eu'}]
+    })
+
+
     render() {
+
+        const numberOfSignedUsers = this.state.signedUsers ?
+            this.state.signedUsers.length
+            :
+            0
+
         return (
             <div>
 
@@ -45,6 +60,23 @@ class Run extends React.Component {
                                 <h2> {'Nazwa biegu: ' + this.state.name}</h2><br/>
                                 <h2>{'Długość biegu: ' + Math.round(this.state.distance * 1000) / 1000} km </h2> <br/>
                                 <h2>{'Kategoria: ' + this.state.category === 'city' ? 'Miejski' : 'Zamiejski'}</h2>
+
+                                {
+                                    numberOfSignedUsers < this.state.runners ?
+                                        <RaisedButton
+                                            label="Zapisz się na bieg"
+                                            primary={true}
+                                            backgroundColor={'green'}
+                                            onClick={this.handleAddRunner}
+                                        />
+                                        :
+                                        <p>Nie ma miejsc na bieg</p>
+                                }
+
+
+                                <h2>lista zapisanych </h2>
+
+
                             </WebeesPaper>
                         </div>
                         :
