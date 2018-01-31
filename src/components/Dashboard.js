@@ -18,6 +18,10 @@ const Dashboard = (props) => {
     console.log(newArr1)
     console.log(newArr1.length)
     // stop
+
+    var arr1 = 13
+    var arr2 = 3
+
     return (
         <WebeesPaper>
             <div>
