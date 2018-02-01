@@ -3,7 +3,20 @@ import {Link} from 'react-router-dom';
 import WebeesPaper from './WebeesPaper'
 import {GridList, GridTile} from 'material-ui/GridList';
 import {database} from "../firebase";
+import {connect} from 'react-redux'
 
+const styles = {
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+    },
+    gridList: {
+        width: '100%',
+        height: 450,
+        overflowY: 'auto',
+    }
+};
 
 class ListView extends React.Component {
     state = {
@@ -23,20 +36,36 @@ class ListView extends React.Component {
                 cols: 4
             })
         }
-
-        var dbRef = database.ref('/runs');
-        dbRef.once('value', snapshot => {
-            const runFromDataBase = Object.entries(snapshot.val())
-                .map(([key, val]) => {
-                    val.key = key
-                    return val
-                })
-            this.setState({runs: runFromDataBase})
-        })
     }
 
+    polishSignsConversion = letter => {
+        switch (letter) {
+            case "ą":
+                return "a"
+            case "ć":
+                return "c"
+            case "ę":
+                return "e"
+            case "ł":
+                return "l"
+            case "ń":
+                return "n"
+            case "ó":
+                return "o"
+            case "ś":
+                return "s"
+            case "ź":
+                return "z"
+            case "ż":
+                return "z"
+            default:
+                return letter
+        }
+    }
+
+    lowercaseEnglishSigns = name => (name.toLowerCase().split('').map(this.polishSignsConversion).join(''))
+
     render() {
-        // console.log(this.state.runs)
         console.log(this.props.searchParams.distance)
         return (
             <div>
@@ -47,17 +76,25 @@ class ListView extends React.Component {
                             style={styles.gridList}
                             cols={this.state.cols}
                         >
-                            {this.state.runs
-                                .filter(run => run.name.indexOf(this.props.searchParams.name) !== -1)
-                                .filter(run => this.props.searchParams.category === '' ? true : run.category === this.props.searchParams.category)
+                            {this.props.runs
+                            &&
+                            this.props.runs
+                                .filter(run => this.props.searchParams.category === '' ?
+                                    true
+                                    :
+                                    run.category === this.props.searchParams.category
+                                )
                                 .filter(run => run.distance < this.props.searchParams.distance)
+                                .filter(run => this.lowercaseEnglishSigns(run.name).indexOf(
+                                    this.lowercaseEnglishSigns(this.props.searchParams.name)
+                                ) !== -1)
                                 .map((run) => (
                                     <Link
                                         key={run.key}
                                         to={'/run/' + run.key}
                                     >
                                         <GridTile
-                                            title={run.name}
+                                            title={run.name + ' - ' + Math.round(run.distance * 1000) / 1000 + ' km'}
                                         >
                                             <img src={`${process.env.PUBLIC_URL}/img/run-google-map.jpg`}/>
                                         </GridTile>
@@ -72,18 +109,11 @@ class ListView extends React.Component {
 
 }
 
-const styles = {
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-    },
-    gridList: {
-        width: '100%',
-        height: 450,
-        overflowY: 'auto',
-    }
-};
+const mapStateToProps = state => ({
+    runs: state.runs.data
+})
 
-export default ListView
+export default connect(
+    mapStateToProps
+)(ListView)
 

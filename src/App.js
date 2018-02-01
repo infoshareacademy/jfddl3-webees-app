@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
-import {Provider} from 'react-redux'
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Provider } from 'react-redux'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import store from './store'
@@ -34,11 +34,11 @@ class App extends Component {
                                 <AppBar
                                     onMenuClickProps={this.toggleSideBar}
 
-                                />
-                                <SideBar
-                                    isSideBarOpenProps={this.state.isSideBarOpenState}
-                                    toggleSideBarProps={this.toggleSideBar}
-                                />
+                        />
+                        <SideBar
+                            isSideBarOpenProps={this.state.isSideBarOpenState}
+                            toggleSideBarProps = {this.toggleSideBar}
+                        />
 
                                 <Route path='/' component={Dashboard} exact={true}/>
                                 <Route path='/list' component={List}/>
