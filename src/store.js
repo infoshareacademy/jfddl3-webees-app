@@ -2,8 +2,8 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 
 import chartsReducer from './state/charts'
-import authReducer from './state/auth'
 import runsReducer, { initRunsSync } from './state/runs'
+import authReducer, { initAuth } from './state/auth'
 
 const reducer = combineReducers({
     runs: runsReducer,
@@ -19,6 +19,8 @@ const store = createStore(
         applyMiddleware(thunk)
     )
 )
+
+store.dispatch(initAuth())
 
 store.dispatch(initRunsSync())
 
