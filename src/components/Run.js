@@ -25,15 +25,19 @@ class Run extends React.Component {
             })
     }
 
-    handleAddRunner = () => this.setState({
-        signedRunners: [{uid: 'sdfghgj', email: 'afgh@a.eu'}]
-    })
-
-
     render() {
 
-        const numberOfSignedUsers = this.state.signedUsers ?
-            this.state.signedUsers.length
+        const currentUserUID = 'sdfghgj' // TODO UID from auth
+        const currentUserEmail = 'afgh@a.eu' // TODO email from auth
+
+        const handleAddRunner = () => this.setState({
+            signedRunners: this.state.signedRunners.concat([{uid: currentUserUID, email: currentUserEmail}])
+        })
+
+        const isUserSignedUp = this.state.signedRunners.filter(user => user.uid === currentUserUID).length === 0 ? false : true
+
+        const numberOfSignedRunners = this.state.signedRunners ?
+            this.state.signedRunners.length
             :
             0
 
@@ -62,13 +66,16 @@ class Run extends React.Component {
                                 <h2>{'Kategoria: ' + this.state.category === 'city' ? 'Miejski' : 'Zamiejski'}</h2>
 
                                 {
-                                    numberOfSignedUsers < this.state.runners ?
-                                        <RaisedButton
-                                            label="Zapisz się na bieg"
-                                            primary={true}
-                                            backgroundColor={'green'}
-                                            onClick={this.handleAddRunner}
-                                        />
+                                    numberOfSignedRunners < this.state.runners ?
+                                        isUserSignedUp ?
+                                            null
+                                            :
+                                            <RaisedButton
+                                                label="Zapisz się na bieg"
+                                                primary={true}
+                                                backgroundColor={'green'}
+                                                onClick={handleAddRunner}
+                                            />
                                         :
                                         <p>Nie ma miejsc na bieg</p>
                                 }
