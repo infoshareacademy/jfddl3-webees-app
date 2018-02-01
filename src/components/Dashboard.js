@@ -15,13 +15,13 @@ const Dashboard = (props) => {
 
     const pieChartData = [{
         value: forestRunLength,
-        name: 'forest',
+        name: 'Forest',
         fill: 'lime'
 
     },
         {
             value: cityRunsLength,
-            name: 'city',
+            name: 'City',
             fill: 'red'
         }
     ]
@@ -31,12 +31,12 @@ const Dashboard = (props) => {
             <div>
                 <Grid>
                     <Row>
-                        <Col class="col-xs-9 col-md-6 col-lg-4" >
+                        <Col xs-12 md-4 lg-2>
                             <PieChart
                                 data={pieChartData}
                             />
                         </Col>
-                        <Col class ="col-xs-9 col-md-6 col-lg-4" >
+                        <Col xs-12 md-4 lg-2 >
                             <NewBarChart
                             />
                         </Col>
