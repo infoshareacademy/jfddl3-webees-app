@@ -28,6 +28,9 @@ const LogIn = (props) => (
             <h1>
                 Zaloguj się!
             </h1>
+            <h6>
+                Przykładowe dane logowania: <br/> mail: example@example.com, hasło: qwerasdf1234
+            </h6>
             <TextField
                 name="email"
                 placeholder={'E-mail'}
@@ -42,6 +45,7 @@ const LogIn = (props) => (
                 style={styles.input}
                 onChange={props.onPasswordChange}
             />
+
             <RaisedButton
                 primary={true}
                 style={styles.button}
@@ -54,6 +58,14 @@ const LogIn = (props) => (
                 onClick={props.onLogInByGoogleClick}
                 label="Zaloguj przez Google"
             />
+
+            <RaisedButton
+                primary={true}
+                style={styles.button}
+                onClick={props.passwordReset}
+                label="Przypomnij haslo"
+            />
+
         </Paper>
     </div>
 )

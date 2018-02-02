@@ -4,7 +4,7 @@ import LogIn from './LogIn'
 import SignUp from './SignUp'
 
 import {connect} from 'react-redux'
-import {logIn, logInByGoogle, createUser} from '../../state/auth'
+import {logIn, logInByGoogle, createUser, passwordReset} from '../../state/auth'
 
 class Forms extends React.Component {
     state = {
@@ -22,6 +22,7 @@ class Forms extends React.Component {
     }
 
     createUserHandler = () => {
+
         if (
             this.state.signUpEmail
             !==
@@ -36,14 +37,6 @@ class Forms extends React.Component {
         )
     }
 
-    // WE CAN DO ALSO SIMPLER ES6 WAY:
-
-    // handleInput = (nameInState, event, value) => {
-    //     this.setState({
-    //         [nameInState]: value
-    //     })
-    // }
-
     render() {
         return (
             <div>
@@ -55,6 +48,7 @@ class Forms extends React.Component {
                         this.state.loginPassword
                     )}
                     onLogInByGoogleClick={this.props.onLogInByGoogleClick}
+                    passwordReset={()=>this.props.passwordReset(this.state.loginEmail)}
                 />
                 <SignUp
                     onEmailChange={(e, v) => (this.handleInput('signUpEmail', e, v))}
@@ -77,7 +71,8 @@ const mapStateToProps = state => ({})
 const mapDispatchToProps = dispatch => ({
     onLogInClick: (email, password) => dispatch(logIn(email, password)),
     onLogInByGoogleClick: () => dispatch(logInByGoogle()),
-    onSignUpClick: (email, password) => dispatch(createUser(email, password))
+    onSignUpClick: (email, password) => dispatch(createUser(email, password)),
+    passwordReset: (email) => dispatch(passwordReset(email))
 })
 
 export default connect(

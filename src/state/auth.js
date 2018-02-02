@@ -37,19 +37,19 @@ const logLoginDate = () => (dispatch, getState) => {
     database.ref(`/users/${uid}/loginLogs`)
         .push({timestamp: Date.now()})
         .then(() => console.log('login date successfully logged in db'))
-        .catch(() => console.log('Something wrong!'))
+        .catch(() => console.log('Cos poszlo nie tak!'))
 }
 
 export const logIn = (email, password) => (dispatch, getState) => {
     auth.signInWithEmailAndPassword(email, password)
         .then(() => console.log('Logged in!'))
-        .catch(() => alert('Something wrong!'))
+        .catch(() => alert('Cos poszlo nie tak!'))
 }
 
 export const logInByGoogle = () => (dispatch, getState) => {
     auth.signInWithPopup(googleProvider)
         .then(() => console.log('Logged in!'))
-        .catch(() => alert('Something wrong!'))
+        .catch(() => alert('Cos poszlo nie tak!'))
 }
 
 export const createUser = (email, password) => (dispatch, getState) => {
@@ -62,7 +62,13 @@ export const createUser = (email, password) => (dispatch, getState) => {
 export const logOut = () => (dispatch, getState) => {
     auth.signOut()
         .then(() => console.log('Log out'))
-        .catch(() => alert('Something wrong!'))
+        .catch(() => alert('Cos poszlo nie tak!'))
+}
+
+export const passwordReset = (email) => (dispatch, getState) => {
+    auth.sendPasswordResetEmail(email)
+        .then(() => alert('Wyslano maila'))
+        .catch(() => alert('Cos poszlo nie tak!'))
 }
 
 

@@ -2,7 +2,6 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 import WebeesPaper from './WebeesPaper'
 import {GridList, GridTile} from 'material-ui/GridList';
-import {database} from "../firebase";
 import {connect} from 'react-redux'
 
 const styles = {
@@ -96,7 +95,7 @@ class ListView extends React.Component {
                                         <GridTile
                                             title={run.name + ' - ' + Math.round(run.distance * 1000) / 1000 + ' km'}
                                         >
-                                            <img src={`${process.env.PUBLIC_URL}/img/run-google-map.jpg`}/>
+                                            <img src={`${process.env.PUBLIC_URL}/img/run-google-map.jpg`} alt={'Mapa google'}/>
                                         </GridTile>
                                     </Link>
                                 ))}
