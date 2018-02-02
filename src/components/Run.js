@@ -3,12 +3,15 @@ import Map from "./Map";
 import {database} from '../firebase'
 import WebeesPaper from "./WebeesPaper";
 import RaisedButton from 'material-ui/RaisedButton';
+import {connect} from 'react-redux'
+
+import {updateRun} from '../state/runs'
 
 
 class Run extends React.Component {
     state = {
         markers: [],
-        signedRunners: [{uid: 'uid', email: 'a@a.pl'}]
+        signedRunners: []
     }
 
     componentWillMount() {
@@ -27,11 +30,13 @@ class Run extends React.Component {
 
     render() {
 
-        const currentUserUID = 'sdfghgj' // TODO UID from auth
-        const currentUserEmail = 'afgh@a.eu' // TODO email from auth
+        const currentUserUID = this.props.userData.uid
+        const currentUserEmail = this.props.userData.email
 
         const handleAddRunner = () => this.setState({
             signedRunners: this.state.signedRunners.concat([{uid: currentUserUID, email: currentUserEmail}])
+        }, () => {
+            this.props.updateRun(this.props.match.params.id, this.state)
         })
 
         const isUserSignedUp = this.state.signedRunners.filter(user => user.uid === currentUserUID).length === 0 ? false : true
@@ -68,7 +73,7 @@ class Run extends React.Component {
                                 {
                                     numberOfSignedRunners < this.state.runners ?
                                         isUserSignedUp ?
-                                            null
+                                            <p>Użytkowanik już zapisany</p>
                                             :
                                             <RaisedButton
                                                 label="Zapisz się na bieg"
@@ -81,8 +86,13 @@ class Run extends React.Component {
                                 }
 
 
-                                <h2>lista zapisanych </h2>
+                                <h2>Lista zapisanych Biegaczy </h2>
 
+                                {
+                                    this.state.signedRunners.map((runner, i) => (
+                                        <div key={runner.uid}>{i + 1}: {runner.email}</div>
+                                    ))
+                                }
 
                             </WebeesPaper>
                         </div>
@@ -96,5 +106,15 @@ class Run extends React.Component {
     }
 }
 
+const mapStateToProps = state => ({
+    userData: state.auth.user
+})
 
-export default Run;
+const mapDispatchToProps = (dispatch) => ({
+    updateRun: (runId, dataToSave) => dispatch(updateRun(runId, dataToSave))
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Run)
