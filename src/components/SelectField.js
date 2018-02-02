@@ -27,6 +27,7 @@ export class RunnersCountSelect extends React.Component {
 	render() {
 		return (
 			<SelectField
+				floatingLabelText="Liczba uczestników"
 				value={this.props.runners}
 				onChange={this.props.onSelectChange}
 				maxHeight={200}

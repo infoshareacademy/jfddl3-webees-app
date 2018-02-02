@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-import AddButton from './AddButton'
+import RaisedButton from 'material-ui/RaisedButton'
 import { RunCategorySelect, RunnersCountSelect } from './SelectField'
 import TextField from 'material-ui/TextField'
-import Map from './Map'
-import { database } from '../firebase'
+import RunSnackBar from './SnackBar'
+import Map from './AddRunMap'
+// import { database } from '../firebase'
+import { addRun } from '../state/runs'
+import { connect } from 'react-redux'
 
 import styles from '../styles'
 
@@ -22,15 +25,15 @@ class AddRun extends React.Component {
 
     runnersCountChange = (event, index, value) => this.setState({ runners: value })
 
-    getData = () => {
-        database.ref('/runs/').once('value')
-            .then(snapshot => {
-                const dataFromDb = snapshot.val()
-                this.setState({
-                    // state: dataFromDb
-                })
-            })
-    }
+    // getData = () => {
+    //     database.ref('/runs/').once('value')
+    //         .then(snapshot => {
+    //             const dataFromDb = snapshot.val()
+    //             this.setState({
+    //                 // state: dataFromDb
+    //             })
+    //         })
+    // }
 
     placeMarker = ({ lat, lng }) => {
         const markerData = { lat, lng, key: Date.now() }
@@ -41,9 +44,9 @@ class AddRun extends React.Component {
     }
 
     markerDescriptionChange = (index, value) => {
-        let newMarkers = this.state.markers.map((marker, i) => i === index ? { ...marker, desc: value } : marker)
+        let markersWithDescription = this.state.markers.map((marker, i) => i === index ? { ...marker, description: value } : marker)
         this.setState({
-            markers: newMarkers
+            markers: markersWithDescription
         })
     }
 
@@ -68,10 +71,7 @@ class AddRun extends React.Component {
     }
 
     saveRun = () => {
-        const listDbRef = database.ref('/runs/')
-        listDbRef.push(this.state)
-            .then(() => console.log('saved'))
-            .catch(() => console.log('error!'));
+        this.props.addRun(this.state)
         this.setState({
             markers: [],
             name: '',
@@ -94,7 +94,12 @@ class AddRun extends React.Component {
                                 markers={this.state.markers}
                                 placeMarker={this.placeMarker}
                             />
-
+                        </div>
+                        <div>
+                            {this.state.distance ?
+                                `Długość biegu: ${this.state.distance.toFixed(3)} km`
+                                :
+                                'Dodaj minimum 2 punkty'}
                         </div>
                     </div>
                     <div>
@@ -112,8 +117,9 @@ class AddRun extends React.Component {
                             onSelectChange={this.runnersCountChange}
                         />
                         <br />
-                        <AddButton
-                            onBtnClick={this.saveRun}
+                        <RunSnackBar
+                            saveRun={this.saveRun}
+                            addCheck={(this.state.markers.length > 1 && this.state.name)}
                         />
                     </div>
                 </div>
@@ -130,4 +136,11 @@ class AddRun extends React.Component {
     }
 }
 
-export default AddRun
+const mapDispatchToProps = (dispatch) => ({
+    addRun: (dataToSave) => dispatch(addRun(dataToSave))
+})
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(AddRun)
