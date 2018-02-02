@@ -11,7 +11,6 @@ import Run from './components/Run'
 import AppBar from './components/AppBar'
 import SideBar from './components/SideBar'
 import ShareButton from './components/ShareButton'
-import styles from './styles'
 import Auth from './components/Auth'
 
 
