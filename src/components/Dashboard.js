@@ -31,13 +31,14 @@ const Dashboard = (props) => {
             <div>
                 <Grid>
                     <Row>
-                        <Col xs-12 md-6 lg-4>
+                        <Col xs={12} md={8} lg={6}>
                             <PieChart
                                 data={pieChartData}
                             />
                         </Col>
-                        <Col xs-12 md-6 lg-6 >
+                        <Col xs={12} md={8} lg={6} >
                             <NewBarChart
+                                data={NewBarChart}
                             />
                         </Col>
 

@@ -35,7 +35,7 @@ const data = [
 
 const NewBarChart = () => (
     <div>
-        <h3>Ilość zalogowanych użytkowników</h3>
+        <h1>Ilość użytkowników</h1>
     <div style={{width: '100vw', height: '100vh'}}>
         <BarChart width={400} height={400} data={data}>
             <CartesianGrid strokeDasharray="3 3" />
