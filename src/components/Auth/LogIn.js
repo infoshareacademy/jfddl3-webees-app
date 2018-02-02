@@ -28,6 +28,9 @@ const LogIn = (props) => (
             <h1>
                 Zaloguj się!
             </h1>
+            <h6>
+                Przykładowe dane logowania: <br/> mail: example@example.com, hasło: qwerasdf1234
+            </h6>
             <TextField
                 name="email"
                 placeholder={'E-mail'}
