@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {Link} from 'react-router-dom';
 import WebeesPaper from './WebeesPaper'
 import {GridList, GridTile} from 'material-ui/GridList';
@@ -95,7 +96,7 @@ class ListView extends React.Component {
                                         <GridTile
                                             title={run.name + ' - ' + Math.round(run.distance * 1000) / 1000 + ' km'}
                                         >
-                                            <img src={`${process.env.PUBLIC_URL}/img/run-google-map.jpg`} alt="run thumbnail"/>
+                                            <img src={`${process.env.PUBLIC_URL}/img/run-google-map.jpg`} alt='Mapa google' />
                                         </GridTile>
                                     </Link>
                                 ))}
