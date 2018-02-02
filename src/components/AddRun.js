@@ -1,10 +1,8 @@
-import React, { Component } from 'react'
-import RaisedButton from 'material-ui/RaisedButton'
+import React from 'react'
 import { RunCategorySelect, RunnersCountSelect } from './SelectField'
 import TextField from 'material-ui/TextField'
 import RunSnackBar from './SnackBar'
 import Map from './AddRunMap'
-// import { database } from '../firebase'
 import { addRun } from '../state/runs'
 import { connect } from 'react-redux'
 
