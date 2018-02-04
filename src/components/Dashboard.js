@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 import NewBarChart from './NewBarChart'
 import PieChart from './PieChart'
-import { Grid, Row, Col } from 'react-flexbox-grid';
-import WebeesPaper from './WebeesPaper';
+import { Grid, Row, Col } from 'react-flexbox-grid'
+import Paper from 'material-ui/Paper'
 
 import { connect } from 'react-redux'
 
-import { webeesColors } from '../styles'
+import styles, { webeesColors } from '../styles'
 
 const Dashboard = props => {
     const cityRuns = props.runData.filter(run => run.category === 'city')
@@ -39,7 +39,7 @@ const Dashboard = props => {
     ]
 
     return (
-        <WebeesPaper>
+        <Paper style={styles.dashboard}>
             <div>
                 <Grid>
                     <Row>
@@ -56,7 +56,7 @@ const Dashboard = props => {
                     </Row>
                 </Grid>
             </div>
-        </WebeesPaper>
+        </Paper>
     )
 }
 

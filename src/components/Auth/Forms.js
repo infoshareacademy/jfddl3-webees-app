@@ -6,8 +6,6 @@ import SignUp from './SignUp'
 import {connect} from 'react-redux'
 import {logIn, logInByGoogle, createUser} from '../../state/auth'
 
-import styles from '../../styles'
-
 class Forms extends React.Component {
     state = {
         loginEmail: '',

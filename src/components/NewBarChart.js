@@ -1,5 +1,4 @@
 import React from 'react'
-import { render } from 'react-dom'
 import { BarChart, CartesianGrid, XAxis, YAxis, Bar } from 'recharts'
 import styles, { webeesColors } from '../styles'
 

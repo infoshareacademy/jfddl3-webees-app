@@ -11,7 +11,6 @@ const AppBar = props => (
         onLeftIconButtonClick={props.onMenuClickProps}
         style={styles.appBar}
         titleStyle={styles.appBarTitle}
-        iconStyleLeft={styles.appBarIcon}
         iconElementRight={
             <FlatButton
                 label="Wyloguj"

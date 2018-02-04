@@ -44,9 +44,6 @@ export default {
         fontFamily: webeesFont,
         fontSize: '1.75em'
     },
-    appBarIcon: {
-        color: webeesColors.beige
-    },
     sideBar: {
         backgroundColor: webeesColors.dark,
         fontFamily: webeesFont,
@@ -75,9 +72,15 @@ export default {
         justifyContent: 'space-evenly',
         alignItems: 'center',
         flexWrap: 'wrap',
-        margin: '10px',
         fontFamily: webeesFont,
         fontSize: '1.5em',
+        color: webeesColors.dark,
+        padding: '40px',
+        width: '80vw',
+        margin: '50px auto 0 auto'
+    },
+    dashboard: {
+        fontFamily: webeesFont,
         color: webeesColors.dark,
         padding: '40px',
         width: '80vw',
@@ -102,5 +105,21 @@ export default {
         padding: 20,
         margin: 20,
         textAlign: 'center'
+    },
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+    },
+    gridList: {
+        width: '100%',
+        height: 540,
+        overflowY: 'auto',
+    },
+    share: {
+        margin: 12,
+        position: "fixed",
+        bottom: 0,
+        right: 0
     }
 }

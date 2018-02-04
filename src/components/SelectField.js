@@ -1,7 +1,7 @@
 import React from 'react'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
-import styles, { webeesColors, webeesFont } from '../styles'
+import { webeesColors, webeesFont } from '../styles'
 
 /* ********************************************************************* */
 
@@ -11,9 +11,10 @@ export const RunCategorySelect = props => (
 			floatingLabelText="Rodzaj biegu"
 			value={props.category}
 			onChange={props.onSelectChange}
-			menuItemStyle={{ fontFamily: webeesFont }}
 			selectedMenuItemStyle={{ color: webeesColors.red }}
-			underlineFocusStyle={{ borderColor: webeesColors.darkGreen }}
+			menuItemStyle={{ fontFamily: webeesFont }}
+			labelStyle={{ fontFamily: webeesFont }}
+			underlineFocusStyle={{ borderColor: webeesColors.green }}
 			floatingLabelStyle={{ color: webeesColors.darkGreen, fontFamily: webeesFont }}
 		>
 			<MenuItem value={'city'} primaryText="Miejski" />
@@ -37,8 +38,9 @@ export class RunnersCountSelect extends React.Component {
 				onChange={this.props.onSelectChange}
 				maxHeight={200}
 				menuItemStyle={{ fontFamily: webeesFont }}
+				labelStyle={{ fontFamily: webeesFont }}
 				selectedMenuItemStyle={{ color: webeesColors.red }}
-				underlineFocusStyle={{ borderColor: webeesColors.darkGreen }}
+				underlineFocusStyle={{ borderColor: webeesColors.green }}
 				floatingLabelStyle={{ color: webeesColors.darkGreen, fontFamily: webeesFont }}
 			>
 				{items}

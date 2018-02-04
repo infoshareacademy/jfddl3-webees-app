@@ -19,7 +19,7 @@ const LogIn = props => (
                 placeholder={'E-mail'}
                 type="email"
                 style={styles.input}
-                underlineFocusStyle={{ borderColor: webeesColors.darkGreen }}
+                underlineFocusStyle={{ borderColor: webeesColors.green }}
                 onChange={props.onEmailChange}
             />
             <TextField
@@ -27,7 +27,7 @@ const LogIn = props => (
                 placeholder={'Password'}
                 type="password"
                 style={styles.input}
-                underlineFocusStyle={{ borderColor: webeesColors.darkGreen }}
+                underlineFocusStyle={{ borderColor: webeesColors.green }}
                 onChange={props.onPasswordChange}
             />
             <div>

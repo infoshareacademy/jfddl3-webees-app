@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import RaisedButton from 'material-ui/RaisedButton'
+import React from 'react'
 import Paper from 'material-ui/Paper'
 import { RunCategorySelect, RunnersCountSelect } from './SelectField'
 import TextField from 'material-ui/TextField'
@@ -96,7 +95,7 @@ class AddRun extends React.Component {
                             value={this.state.name}
                             style={styles.input}
                             floatingLabelFocusStyle={{ color: webeesColors.darkGreen }}
-                            underlineFocusStyle={{ borderColor: webeesColors.darkGreen }}
+                            underlineFocusStyle={{ borderColor: webeesColors.green }}
                             onChange={this.runNameChange}
                         />
                         <RunCategorySelect
@@ -107,11 +106,12 @@ class AddRun extends React.Component {
                             runners={this.state.runners}
                             onSelectChange={this.runnersCountChange}
                         />
-                        <br />
-                        <RunSnackBar
-                            saveRun={this.saveRun}
-                            addCheck={(this.state.markers.length > 1 && this.state.name)}
-                        />
+                        <div style={{ margin: '20px', display: 'flex', justifyContent: 'center' }}>
+                            <RunSnackBar
+                                saveRun={this.saveRun}
+                                addCheck={(this.state.markers.length > 1 && this.state.name)}
+                            />
+                        </div>
                     </div>
                 </Paper>
                 <div style={styles.markerDescriptionContainer}>
@@ -119,6 +119,9 @@ class AddRun extends React.Component {
                         <TextField
                             floatingLabelText={`Opis punktu nr ${index + 1}`}
                             onChange={(e, value) => this.markerDescriptionChange(index, value)}
+                            style={styles.input}
+                            floatingLabelFocusStyle={{ color: webeesColors.darkGreen }}
+                            underlineFocusStyle={{ borderColor: webeesColors.green }}
                         />
                     ))}
                 </div>

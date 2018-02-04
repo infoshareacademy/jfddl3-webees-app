@@ -2,7 +2,7 @@ import React from 'react'
 import Snackbar from 'material-ui/Snackbar'
 import RaisedButton from 'material-ui/RaisedButton'
 
-import styles, { webeesColors, webeesFont } from '../styles'
+import { webeesColors, webeesFont } from '../styles'
 
 export default class SnackbarExampleSimple extends React.Component {
 
@@ -39,7 +39,6 @@ export default class SnackbarExampleSimple extends React.Component {
                     backgroundColor={webeesColors.darkGreen}
                     labelStyle={{ fontFamily: webeesFont }}
                     labelColor={webeesColors.beige}
-                    style={{ margin: '20px 0' }}
                 />
                 <Snackbar
                     open={this.state.open}

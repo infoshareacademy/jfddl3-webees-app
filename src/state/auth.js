@@ -39,7 +39,6 @@ const syncLoginLogs = () => (dispatch, getState) => {
 }
 
 const syncUsersData = () => (dispatch, getState) => {
-    const uid = getState().auth.user.uid
     database.ref(`/users/`)
         .on('value', (snapshot) => dispatch(setUsersData(snapshot.val())))
 }
@@ -48,36 +47,24 @@ const logLoginDate = () => (dispatch, getState) => {
     const uid = getState().auth.user.uid
     database.ref(`/users/${uid}/loginLogs`)
         .push({ timestamp: Date.now() })
-        .then(() => console.log('login date successfully logged in db'))
-        .catch(() => console.log('Something wrong!'))
     database.ref(`/loginLogs/`)
         .push({ timestamp: Date.now() })
-        .then(() => console.log('login date successfully logged in db'))
-        .catch(() => console.log('Something wrong!'))
 }
 
 export const logIn = (email, password) => (dispatch, getState) => {
     auth.signInWithEmailAndPassword(email, password)
-        .then(() => console.log('Logged in!'))
-        .catch(() => alert('Something wrong!'))
 }
 
 export const logInByGoogle = () => (dispatch, getState) => {
     auth.signInWithPopup(googleProvider)
-        .then(() => console.log('Logged in!'))
-        .catch(() => alert('Something wrong!'))
 }
 
 export const createUser = (email, password) => (dispatch, getState) => {
     auth.createUserWithEmailAndPassword(email, password)
-        .then(() => console.log('User created'))
-        .catch((e) => console.log(e))
 }
 
 export const logOut = () => (dispatch, getState) => {
     auth.signOut()
-        .then(() => console.log('Log out'))
-        .catch(() => alert('Something wrong!'))
 }
 
 const initialState = {
