@@ -1,36 +1,37 @@
 import React from 'react';
 import NewBarChart from './NewBarChart'
 import PieChart from './PieChart'
-import {Grid, Row, Col} from 'react-flexbox-grid';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import WebeesPaper from './WebeesPaper';
 
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
-const Dashboard = (props) => {
+import { webeesColors } from '../styles'
+
+const Dashboard = props => {
     const cityRuns = props.runData.filter(run => run.category === 'city')
     const cityRunsLength = cityRuns.length
     const forestRun = props.runData.filter(run => run.category === 'forest')
     const forestRunLength = forestRun.length
-    const loginCount = props.loginCount.map((dayCount, index)=>(
+    const loginCount = Object.entries(props.loginCount).map(keyValueArray => (
         {
-        :
-        dayCount
-    }))
+            "time": keyValueArray[0], // not working
+            "users": keyValueArray[1]
+        }
+    ))
 
-
-    const pieChartData = [{
-        value: forestRunLength,
-        name: 'Forest',
-        fill: 'lime'
-
-    },
+    const pieChartData = [
+        {
+            value: forestRunLength,
+            name: 'Forest',
+            fill: webeesColors.green
+        },
         {
             value: cityRunsLength,
             name: 'City',
-            fill: 'red'
+            fill: webeesColors.red
         }
     ]
-
 
     return (
         <WebeesPaper>

@@ -1,4 +1,4 @@
-const webeesColors = {
+export const webeesColors = {
     red: '#BF352F',
     beige: '#FFD99B',
     green: '#88A34F',
@@ -9,8 +9,18 @@ const webeesColors = {
 const webeesFont = "'Quicksand', sans-serif"
 
 export default {
+    webeesFont:{
+        fontFamily: webeesFont,
+        color: webeesColors.dark
+    },
+    flexCenter: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column'
+    },
     appBar: {
-        backgroundColor: webeesColors.dark,
+        backgroundColor: webeesColors.dark
     },
     appBarTitle: {
         color: webeesColors.beige,
