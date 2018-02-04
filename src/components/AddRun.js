@@ -25,16 +25,6 @@ class AddRun extends React.Component {
 
     runnersCountChange = (event, index, value) => this.setState({ runners: value })
 
-    // getData = () => {
-    //     database.ref('/runs/').once('value')
-    //         .then(snapshot => {
-    //             const dataFromDb = snapshot.val()
-    //             this.setState({
-    //                 // state: dataFromDb
-    //             })
-    //         })
-    // }
-
     placeMarker = ({ lat, lng }) => {
         const markerData = { lat, lng, key: Date.now() }
         this.setState({

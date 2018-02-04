@@ -74,16 +74,15 @@ export const createUser = (email, password) => (dispatch, getState) => {
         .catch((e) => console.log(e))
 }
 
-
 export const logOut = () => (dispatch, getState) => {
     auth.signOut()
         .then(() => console.log('Log out'))
         .catch(() => alert('Something wrong!'))
 }
 
-
 const initialState = {
-    user: null
+    user: null,
+    loginCount: {}
 }
 
 const calculateLoginLogs = usersData => (

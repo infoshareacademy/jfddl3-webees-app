@@ -3,29 +3,18 @@ import { render } from 'react-dom'
 import { BarChart, CartesianGrid, XAxis, YAxis, Bar } from 'recharts'
 import styles, { webeesColors } from '../styles'
 
-// const example = [
-//     {
-//         'time': 'today',
-//         'users': 15,
-//     },
-//     {
-//         'time': 1,
-//         'users': 20,
-//     }
-// ]
-
 const NewBarChart = props => (
     <div>
-        <h2 style={styles.font}>Ilość użytkowników</h2>
-        <div>
-            <BarChart width={400} height={400} data={props.data}>
-                <CartesianGrid strokeDasharray="3 3" />
+        <div style={styles.flexCenter}>
+            <h2 style={styles.webeesFont}>Ilość użytkowników</h2>
+            <BarChart width={580} height={400} data={props.data}>
+                <CartesianGrid strokeDasharray="5 5" />
                 <XAxis dataKey="time" />
                 <YAxis />
                 <Bar
                     label={true}
                     dataKey="users"
-                    fill={webeesColors.darkGreen}
+                    fill={webeesColors.green}
                 />
             </BarChart>
         </div>

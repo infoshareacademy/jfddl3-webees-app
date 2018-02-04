@@ -6,6 +6,8 @@ import SignUp from './SignUp'
 import {connect} from 'react-redux'
 import {logIn, logInByGoogle, createUser} from '../../state/auth'
 
+import styles from '../../styles'
+
 class Forms extends React.Component {
     state = {
         loginEmail: '',
@@ -36,14 +38,6 @@ class Forms extends React.Component {
         )
     }
 
-    // WE CAN DO ALSO SIMPLER ES6 WAY:
-
-    // handleInput = (nameInState, event, value) => {
-    //     this.setState({
-    //         [nameInState]: value
-    //     })
-    // }
-
     render() {
         return (
             <div>
@@ -55,6 +49,7 @@ class Forms extends React.Component {
                         this.state.loginPassword
                     )}
                     onLogInByGoogleClick={this.props.onLogInByGoogleClick}
+                    
                 />
                 <SignUp
                     onEmailChange={(e, v) => (this.handleInput('signUpEmail', e, v))}

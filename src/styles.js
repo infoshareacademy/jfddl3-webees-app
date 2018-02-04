@@ -9,7 +9,7 @@ export const webeesColors = {
 const webeesFont = "'Quicksand', sans-serif"
 
 export default {
-    webeesFont:{
+    webeesFont: {
         fontFamily: webeesFont,
         color: webeesColors.dark
     },
@@ -38,8 +38,9 @@ export default {
     link: {
         color: webeesColors.beige,
         fontFamily: webeesFont,
-        fontSize: '1em',
-        textDecoration: 'none'
+        fontSize: '1.15em',
+        textDecoration: 'none',
+        margin: '1em 0'
     },
     addRunContainer: {
         display: 'flex',
@@ -67,5 +68,10 @@ export default {
         color: webeesColors.dark,
         fontFamily: webeesFont,
         fontSize: '1em'
+    },
+    webeesPaper: {
+        padding: 20,
+        margin: 20,
+        textAlign: 'center'
     }
 }

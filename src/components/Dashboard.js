@@ -10,24 +10,29 @@ import { webeesColors } from '../styles'
 
 const Dashboard = props => {
     const cityRuns = props.runData.filter(run => run.category === 'city')
-    const cityRunsLength = cityRuns.length
     const forestRun = props.runData.filter(run => run.category === 'forest')
-    const forestRunLength = forestRun.length
+    const dayName = dayNumber => {
+        switch (dayNumber) {
+            case '0': return 'dziś';
+            case '1': return 'wczoraj';
+            default: return (dayNumber + ' dni');
+        }
+    }
     const loginCount = Object.entries(props.loginCount).map(keyValueArray => (
         {
-            "time": keyValueArray[0], // not working
+            "time": dayName(keyValueArray[0]),
             "users": keyValueArray[1]
         }
     ))
 
     const pieChartData = [
         {
-            value: forestRunLength,
+            value: forestRun.length,
             name: 'Forest',
-            fill: webeesColors.green
+            fill: webeesColors.darkGreen
         },
         {
-            value: cityRunsLength,
+            value: cityRuns.length,
             name: 'City',
             fill: webeesColors.red
         }
@@ -38,12 +43,12 @@ const Dashboard = props => {
             <div>
                 <Grid>
                     <Row>
-                        <Col xs={12} md={8} lg={6}>
+                        <Col xs={12} md={12} lg={12} xl={6}>
                             <PieChart
                                 data={pieChartData}
                             />
                         </Col>
-                        <Col xs={12} md={8} lg={6}>
+                        <Col xs={12} md={12} lg={12} xl={6}>
                             <NewBarChart
                                 data={loginCount}
                             />
@@ -54,7 +59,6 @@ const Dashboard = props => {
         </WebeesPaper>
     )
 }
-
 
 const mapStateToProps = state => ({
     runData: state.runs.data,
