@@ -3,39 +3,23 @@ import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 
-const styles = {
-    container: {
-        width: '100%',
-        height: '100%',
-    },
-    item: {
-        margin: '5%',
-        padding: '5%',
-        textAlign: 'center'
-    },
-    input: {
-        width: '100%',
-        marginBottom: '10px'
-    },
-    button: {
-        margin: '10px'
-    }
-}
+import styles, { webeesColors, webeesFont } from '../../styles'
 
-const LogIn = (props) => (
-    <div style={styles.container}>
-        <Paper style={styles.item}>
+const LogIn = props => (
+    <div style={styles.flexCenter}>
+        <Paper style={styles.loginBox}>
             <h1>
                 Zaloguj się!
-            </h1>
-            <h6>
-                Przykładowe dane logowania: <br/> mail: example@example.com, hasło: qwerasdf1234
-            </h6>
+                </h1>
+            <h5 style={styles.centerItalic}>
+                Przykładowe dane logowania:<br />mail: example@example.com<br />hasło: qwerasdf1234
+                </h5>
             <TextField
                 name="email"
                 placeholder={'E-mail'}
                 type="email"
                 style={styles.input}
+                underlineFocusStyle={{ borderColor: webeesColors.darkGreen }}
                 onChange={props.onEmailChange}
             />
             <TextField
@@ -43,20 +27,27 @@ const LogIn = (props) => (
                 placeholder={'Password'}
                 type="password"
                 style={styles.input}
+                underlineFocusStyle={{ borderColor: webeesColors.darkGreen }}
                 onChange={props.onPasswordChange}
             />
-            <RaisedButton
-                primary={true}
-                style={styles.button}
-                onClick={props.onLogInClick}
-                label="Zaloguj"
-            />
-            <RaisedButton
-                secondary={true}
-                style={styles.button}
-                onClick={props.onLogInByGoogleClick}
-                label="Zaloguj przez Google"
-            />
+            <div>
+                <RaisedButton
+                    onClick={props.onLogInClick}
+                    label="Zaloguj"
+                    backgroundColor={webeesColors.green}
+                    labelStyle={{ fontFamily: webeesFont }}
+                    labelColor={webeesColors.darkGreen}
+                    style={{ margin: '20px' }}
+                />
+                <RaisedButton
+                    onClick={props.onLogInClick}
+                    label="Zaloguj przez Google"
+                    backgroundColor={webeesColors.darkGreen}
+                    labelStyle={{ fontFamily: webeesFont }}
+                    labelColor={webeesColors.beige}
+                    style={{ margin: '20px' }}
+                />
+            </div>
         </Paper>
     </div>
 )

@@ -40,7 +40,7 @@ class Forms extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{backgroundColor: 'lightgrey', height: '100vh', margin: '0'}}>
                 <LogIn
                     onEmailChange={(e, v) => (this.handleInput('loginEmail', e, v))}
                     onPasswordChange={(e, v) => (this.handleInput('loginPassword', e, v))}
@@ -49,7 +49,6 @@ class Forms extends React.Component {
                         this.state.loginPassword
                     )}
                     onLogInByGoogleClick={this.props.onLogInByGoogleClick}
-                    
                 />
                 <SignUp
                     onEmailChange={(e, v) => (this.handleInput('signUpEmail', e, v))}

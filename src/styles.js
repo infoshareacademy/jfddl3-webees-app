@@ -6,7 +6,7 @@ export const webeesColors = {
     dark: '#132326'
 }
 
-const webeesFont = "'Quicksand', sans-serif"
+export const webeesFont = "'Quicksand', sans-serif"
 
 export default {
     webeesFont: {
@@ -18,6 +18,23 @@ export default {
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column'
+    },
+    loginBox: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        fontFamily: webeesFont,
+        color: webeesColors.dark,
+        width: '50vw',
+        height: '40vh',
+        margin: '40px',
+        minWidth: '400px',
+        minHeight: '400px'
+    },
+    centerItalic: {
+        textAlign: 'center',
+        fontStyle: 'italic'
     },
     appBar: {
         backgroundColor: webeesColors.dark
@@ -35,12 +52,23 @@ export default {
         fontFamily: webeesFont,
         fontSize: '1.1em'
     },
+    input: {
+        display: 'block',
+        marginBottom: '5px',
+        fontFamily: webeesFont,
+        color: webeesColors.dark
+    },
     link: {
         color: webeesColors.beige,
         fontFamily: webeesFont,
         fontSize: '1.15em',
         textDecoration: 'none',
         margin: '1em 0'
+    },
+    mapBox: {
+        border: '1px solid' + webeesColors.dark,
+        width: '50vw',
+        height: '50vh'
     },
     addRunContainer: {
         display: 'flex',
@@ -50,9 +78,10 @@ export default {
         margin: '10px',
         fontFamily: webeesFont,
         fontSize: '1.5em',
-        color: webeesColors.dark
-    },
-    mapContainer: {
+        color: webeesColors.dark,
+        padding: '40px',
+        width: '80vw',
+        margin: '50px auto 0 auto'
     },
     markerDescriptionContainer: {
         display: 'flex',
