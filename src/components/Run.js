@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 
 import {updateRun} from '../state/runs'
 
+import {webeesColors, webeesFont} from '../styles'
 
 class Run extends React.Component {
     state = {
@@ -19,7 +20,6 @@ class Run extends React.Component {
     }
 
     getRun = () => {
-        // TODO get this data from redux
         database.ref(`/runs/${this.props.match.params.id}`)
             .once('value', (snapshot) => {
                 this.setState(snapshot.val())
@@ -27,10 +27,8 @@ class Run extends React.Component {
     }
 
     render() {
-
         const currentUserUID = this.props.userData.uid
         const currentUserEmail = this.props.userData.email
-
         const handleAddRunner = () => this.setState({
             signedRunners: this.state.signedRunners.concat([{uid: currentUserUID, email: currentUserEmail}])
         }, () => {
@@ -46,7 +44,6 @@ class Run extends React.Component {
 
         return (
             <div>
-
                 {
                     this.state.markers[0] ?
                         <div>
@@ -60,35 +57,35 @@ class Run extends React.Component {
                                         markers={this.state.markers}
                                     />
                                 </div>
-
                             </WebeesPaper>
-                            <WebeesPaper>
 
-                                <h2> {'Nazwa biegu: ' + this.state.name}</h2><br/>
-                                <h2>{'Długość biegu: ' + Math.round(this.state.distance * 1000) / 1000} km </h2> <br/>
-                                <h2>{'Kategoria: ' + this.state.category === 'city' ? 'Miejski' : 'Zamiejski'}</h2>
+                            <WebeesPaper>
+                                <h2 style={{fontFamily: webeesFont}}> {'Nazwa biegu: ' + this.state.name}</h2>
+                                <h2 style={{fontFamily: webeesFont}}>{'Długość biegu: ' + Math.round(this.state.distance * 1000) / 1000} km </h2>
+                                <h2 style={{fontFamily: webeesFont}}>{'Kategoria: ' + this.state.category === 'city' ? 'Miejski' : 'Zamiejski'}</h2>
 
                                 {
                                     numberOfSignedRunners < this.state.runners ?
                                         isUserSignedUp ?
-                                            <p>Użytkowanik już zapisany</p>
+                                            <p style={{fontFamily: webeesFont}}>Użytkowanik już zapisany</p>
                                             :
                                             <RaisedButton
                                                 label="Zapisz się na bieg"
-                                                primary={true}
-                                                backgroundColor={'green'}
                                                 onClick={handleAddRunner}
+                                                backgroundColor={webeesColors.darkGreen}
+                                                labelStyle={{fontFamily: webeesFont}}
+                                                labelColor={webeesColors.beige}
                                             />
                                         :
-                                        <p>Nie ma miejsc na bieg</p>
+                                        <p style={{fontFamily: webeesFont}}>Nie ma miejsc na bieg</p>
                                 }
 
 
-                                <h2>Lista zapisanych Biegaczy </h2>
+                                <h2 style={{fontFamily: webeesFont}}>Lista zapisanych biegaczy:</h2>
 
                                 {
                                     this.state.signedRunners.map((runner, i) => (
-                                        <div key={runner.uid}>{i + 1}: {runner.email}</div>
+                                        <div key={runner.uid} style={{fontFamily: webeesFont}}>{i + 1}: {runner.email}</div>
                                     ))
                                 }
 
@@ -96,7 +93,7 @@ class Run extends React.Component {
                         </div>
                         :
                         <WebeesPaper>
-                            <h1>Ładowanie...</h1>
+                            <h3 style={{fontFamily: webeesFont}}>Ładowanie...</h3>
                         </WebeesPaper>
                 }
             </div>
