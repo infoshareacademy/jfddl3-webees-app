@@ -3,28 +3,11 @@ import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 
-const styles = {
-    container: {
-        width: '100%',
-        height: '100%',
-    },
-    item: {
-        margin: '5%',
-        padding: '5%',
-        textAlign: 'center'
-    },
-    input: {
-        width: '100%',
-        marginBottom: '10px'
-    },
-    button: {
-        margin: '10px'
-    }
-}
+import styles, { webeesColors, webeesFont } from '../../styles'
 
 const SignUp = (props) => (
-    <div style={styles.container}>
-        <Paper style={styles.item}>
+    <div style={styles.flexCenter}>
+        <Paper style={styles.loginBox}>
             <h1>
                 Zarejestruj się!
             </h1>
@@ -33,6 +16,7 @@ const SignUp = (props) => (
                 placeholder={'E-mail'}
                 type="email"
                 style={styles.input}
+                underlineFocusStyle={{ borderColor: webeesColors.darkGreen }}
                 onChange={props.onEmailChange}
             />
             <TextField
@@ -40,6 +24,7 @@ const SignUp = (props) => (
                 placeholder={'Password'}
                 type="password"
                 style={styles.input}
+                underlineFocusStyle={{ borderColor: webeesColors.darkGreen }}
                 onChange={props.onPasswordChange}
             />
             <TextField
@@ -47,13 +32,16 @@ const SignUp = (props) => (
                 placeholder={'Retype password'}
                 type="password"
                 style={styles.input}
+                underlineFocusStyle={{ borderColor: webeesColors.darkGreen }}
                 onChange={props.onRetypePasswordChange}
             />
             <RaisedButton
-                primary={true}
-                style={styles.button}
                 onClick={props.onSignUpClick}
                 label="Zarejestruj"
+                backgroundColor={webeesColors.green}
+                labelStyle={{ fontFamily: webeesFont }}
+                labelColor={webeesColors.darkGreen}
+                style={{ margin: '20px' }}
             />
         </Paper>
     </div>

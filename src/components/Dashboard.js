@@ -1,28 +1,70 @@
-import React from 'react';
-import NewBarChart from './BarChart'
+import React from 'react'
+import NewBarChart from './NewBarChart'
 import PieChart from './PieChart'
-import ReLineChart from './ReLineChart'
-import { Grid, Row, Col } from 'react-flexbox-grid';
-import WebeesPaper from "./WebeesPaper";
+import { Grid, Row, Col } from 'react-flexbox-grid'
+import Paper from 'material-ui/Paper'
 
-const Dashboard = () => (
-    <WebeesPaper>
-        <div>
-            <Grid>
-                <Row>
-                    <Col xs={12} md={6} lg={4}>
-                        <PieChart/>
-                    </Col>
-                    <Col xs={12} md={6} lg={4}>
-                        <NewBarChart/>
-                    </Col>
-                    <Col xs={12} md={6} lg={4}>
-                        <ReLineChart/>
-                    </Col>
-                </Row>
-            </Grid>
-        </div>
-    </WebeesPaper>
-)
+import { connect } from 'react-redux'
 
-export default Dashboard;
+import styles, { webeesColors } from '../styles'
+
+const Dashboard = props => {
+    const cityRuns = props.runData.filter(run => run.category === 'city')
+    const forestRun = props.runData.filter(run => run.category === 'forest')
+    const dayName = dayNumber => {
+        switch (dayNumber) {
+            case '0': return 'dziś';
+            case '1': return 'wczoraj';
+            default: return (dayNumber + ' dni');
+        }
+    }
+    const loginCount = Object.entries(props.loginCount).map(keyValueArray => (
+        {
+            "time": dayName(keyValueArray[0]),
+            "users": keyValueArray[1]
+        }
+    ))
+
+    const pieChartData = [
+        {
+            value: forestRun.length,
+            name: 'Forest',
+            fill: webeesColors.darkGreen
+        },
+        {
+            value: cityRuns.length,
+            name: 'City',
+            fill: webeesColors.red
+        }
+    ]
+
+    return (
+        <Paper style={styles.dashboard}>
+            <div>
+                <Grid>
+                    <Row>
+                        <Col xs={12} md={12} lg={12} xl={6}>
+                            <PieChart
+                                data={pieChartData}
+                            />
+                        </Col>
+                        <Col xs={12} md={12} lg={12} xl={6}>
+                            <NewBarChart
+                                data={loginCount}
+                            />
+                        </Col>
+                    </Row>
+                </Grid>
+            </div>
+        </Paper>
+    )
+}
+
+const mapStateToProps = state => ({
+    runData: state.runs.data,
+    loginCount: state.auth.loginCount
+})
+
+export default connect(
+    mapStateToProps
+)(Dashboard)

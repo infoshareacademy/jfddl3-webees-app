@@ -1,48 +1,22 @@
-import React from 'react';
-import { PieChart as RePieChart, Pie, Tooltip }  from 'recharts'
+import React from 'react'
+import { PieChart as RePieChart, Pie, Tooltip } from 'recharts'
+import styles from '../styles'
 
-
-
-const data = [
-    {
-        value: 10,
-        name: 'Fellin',
-        fill:'lime'
-
-    },
-    {
-        value: 20,
-        name: 'Stare Miasto',
-        fill:'yellow'
-    },
-    {
-        value: 20,
-        name: 'Park Ludowy',
-        fill:'green'
-    },
-    {
-        value: 15,
-        name: 'Ogród Saski'
-    }
-
-]
-
-const PieChart = () => (
-    <div id="root">
-        <div>
-            <h2>Najpopularniejsze trasy</h2>
-        <RePieChart width={400} height={400}>
-
-            <Pie
-                data={data}
-                dataKey="value"
-                nameKey="name"
-                fill='blue'
-            />
-            <Tooltip/>
-        </RePieChart>
+const PieChart = props => (
+    <div>
+        <div style={styles.flexCenter}>
+            <h2 style={styles.webeesFont}>Rodzaje tras biegowych</h2>
+            <RePieChart width={450} height={450}>
+                <Pie
+                    data={props.data}
+                    dataKey="value"
+                    nameKey="name"
+                    labelLine={false}
+                />
+                <Tooltip />
+            </RePieChart>
         </div>
     </div>
-);
+)
 
-export default PieChart;
+export default PieChart

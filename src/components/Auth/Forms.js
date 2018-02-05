@@ -36,17 +36,9 @@ class Forms extends React.Component {
         )
     }
 
-    // WE CAN DO ALSO SIMPLER ES6 WAY:
-
-    // handleInput = (nameInState, event, value) => {
-    //     this.setState({
-    //         [nameInState]: value
-    //     })
-    // }
-
     render() {
         return (
-            <div>
+            <div style={{backgroundColor: 'lightgrey', height: '100vh', margin: '0'}}>
                 <LogIn
                     onEmailChange={(e, v) => (this.handleInput('loginEmail', e, v))}
                     onPasswordChange={(e, v) => (this.handleInput('loginPassword', e, v))}

@@ -1,4 +1,5 @@
 import React from 'react'
+import Paper from 'material-ui/Paper'
 import { RunCategorySelect, RunnersCountSelect } from './SelectField'
 import TextField from 'material-ui/TextField'
 import RunSnackBar from './SnackBar'
@@ -6,7 +7,7 @@ import Map from './AddRunMap'
 import { addRun } from '../state/runs'
 import { connect } from 'react-redux'
 
-import styles from '../styles'
+import styles, { webeesColors } from '../styles'
 
 class AddRun extends React.Component {
     state = {
@@ -22,16 +23,6 @@ class AddRun extends React.Component {
     runNameChange = (event, value) => this.setState({ name: value })
 
     runnersCountChange = (event, index, value) => this.setState({ runners: value })
-
-    // getData = () => {
-    //     database.ref('/runs/').once('value')
-    //         .then(snapshot => {
-    //             const dataFromDb = snapshot.val()
-    //             this.setState({
-    //                 // state: dataFromDb
-    //             })
-    //         })
-    // }
 
     placeMarker = ({ lat, lng }) => {
         const markerData = { lat, lng, key: Date.now() }
@@ -80,12 +71,10 @@ class AddRun extends React.Component {
     render() {
         return (
             <div>
-                <div style={styles.addRunContainer}>
+                <Paper style={styles.addRunContainer}>
                     <div style={styles.mapContainer}>
-                        <div style={{ margin: '10px 0' }}>Dodaj nowy bieg!</div>
-                        <div
-                            style={{ border: '1px solid black', width: '50vw', height: '50vh' }}
-                        >
+                        <h4 style={{ margin: '10px 0' }}>Dodaj nowy bieg!</h4>
+                        <div style={styles.mapBox}                        >
                             <Map
                                 center={{ lat: 51.216276, lng: 22.631233 }}
                                 zoom={15}
@@ -93,17 +82,20 @@ class AddRun extends React.Component {
                                 placeMarker={this.placeMarker}
                             />
                         </div>
-                        <div>
+                        <h6 style={{ margin: '5px 0' }}>
                             {this.state.distance ?
                                 `Długość biegu: ${this.state.distance.toFixed(3)} km`
                                 :
                                 'Dodaj minimum 2 punkty'}
-                        </div>
+                        </h6>
                     </div>
                     <div>
                         <TextField
                             floatingLabelText={'Nazwa biegu'}
                             value={this.state.name}
+                            style={styles.input}
+                            floatingLabelFocusStyle={{ color: webeesColors.darkGreen }}
+                            underlineFocusStyle={{ borderColor: webeesColors.green }}
                             onChange={this.runNameChange}
                         />
                         <RunCategorySelect
@@ -114,18 +106,22 @@ class AddRun extends React.Component {
                             runners={this.state.runners}
                             onSelectChange={this.runnersCountChange}
                         />
-                        <br />
-                        <RunSnackBar
-                            saveRun={this.saveRun}
-                            addCheck={(this.state.markers.length > 1 && this.state.name)}
-                        />
+                        <div style={{ margin: '20px', display: 'flex', justifyContent: 'center' }}>
+                            <RunSnackBar
+                                saveRun={this.saveRun}
+                                addCheck={(this.state.markers.length > 1 && this.state.name)}
+                            />
+                        </div>
                     </div>
-                </div>
+                </Paper>
                 <div style={styles.markerDescriptionContainer}>
                     {this.state.markers.map((marker, index) => (
                         <TextField
                             floatingLabelText={`Opis punktu nr ${index + 1}`}
                             onChange={(e, value) => this.markerDescriptionChange(index, value)}
+                            style={styles.input}
+                            floatingLabelFocusStyle={{ color: webeesColors.darkGreen }}
+                            underlineFocusStyle={{ borderColor: webeesColors.green }}
                         />
                     ))}
                 </div>

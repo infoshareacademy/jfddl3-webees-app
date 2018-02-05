@@ -1,19 +1,12 @@
 import React from 'react'
 import Paper from 'material-ui/Paper'
+import styles from '../styles'
 
-const style = {
-    padding: 20,
-    margin: 20,
-    textAlign: 'center',
-}
-
-const WebeesPaper = (props) => (
+const WebeesPaper = props => (
     <div>
-        <Paper style={style}>
+        <Paper style={styles.webeesPaper}>
             {props.children}
         </Paper>
-
-
     </div>
 )
 

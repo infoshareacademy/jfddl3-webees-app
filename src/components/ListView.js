@@ -1,22 +1,10 @@
 import React from 'react'
-
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import WebeesPaper from './WebeesPaper'
-import {GridList, GridTile} from 'material-ui/GridList';
-import {connect} from 'react-redux'
+import { GridList, GridTile } from 'material-ui/GridList'
+import { connect } from 'react-redux'
 
-const styles = {
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-    },
-    gridList: {
-        width: '100%',
-        height: 450,
-        overflowY: 'auto',
-    }
-};
+import styles, { webeesColors, webeesFont } from '../styles'
 
 class ListView extends React.Component {
     state = {
@@ -66,7 +54,6 @@ class ListView extends React.Component {
     lowercaseEnglishSigns = name => (name.toLowerCase().split('').map(this.polishSignsConversion).join(''))
 
     render() {
-        console.log(this.props.searchParams.distance)
         return (
             <div>
                 <WebeesPaper>
@@ -75,38 +62,41 @@ class ListView extends React.Component {
                             cellHeight={180}
                             style={styles.gridList}
                             cols={this.state.cols}
+                            padding={12}
                         >
                             {this.props.runs
-                            &&
-                            this.props.runs
-                                .filter(run => this.props.searchParams.category === '' ?
-                                    true
-                                    :
-                                    run.category === this.props.searchParams.category
-                                )
-                                .filter(run => run.distance < this.props.searchParams.distance)
-                                .filter(run => this.lowercaseEnglishSigns(run.name).indexOf(
-                                    this.lowercaseEnglishSigns(this.props.searchParams.name)
-                                ) !== -1)
-                                .map((run) => (
-                                    <Link
-                                        key={run.key}
-                                        to={'/run/' + run.key}
-                                    >
-                                        <GridTile
-                                            title={run.name + ' - ' + Math.round(run.distance * 1000) / 1000 + ' km'}
+                                &&
+                                this.props.runs
+                                    .filter(run => this.props.searchParams.category === '' ?
+                                        true
+                                        :
+                                        run.category === this.props.searchParams.category
+                                    )
+                                    .filter(run => run.distance < this.props.searchParams.distance)
+                                    .filter(run => this.lowercaseEnglishSigns(run.name).indexOf(
+                                        this.lowercaseEnglishSigns(this.props.searchParams.name)
+                                    ) !== -1)
+                                    .map((run) => (
+                                        <Link
+                                            key={run.key}
+                                            to={'/run/' + run.key}
                                         >
-                                            <img src={`${process.env.PUBLIC_URL}/img/run-google-map.jpg`} alt='Mapa google' />
-                                        </GridTile>
-                                    </Link>
-                                ))}
+                                            <GridTile
+                                                title={run.name + ' - ' + Math.round(run.distance * 1000) / 1000 + ' km'}
+                                                titleStyle={{ fontFamily: webeesFont, color: webeesColors.dark }}
+                                                titleBackground={'rgba(0, 0, 0, 0.1)'}
+                                                style={{border: '1px solid lightgrey'}}
+                                            >
+                                                <img src={`${process.env.PUBLIC_URL}/img/run-google-map.jpg`} alt="run map" />
+                                            </GridTile>
+                                        </Link>
+                                    ))}
                         </GridList>
                     </div>
                 </WebeesPaper>
             </div>
         )
     }
-
 }
 
 const mapStateToProps = state => ({
