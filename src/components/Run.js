@@ -15,9 +15,7 @@ class Run extends React.Component {
     getRun = () => {
         database.ref(`/runs/${this.props.match.params.id}`)
             .once('value', (snapshot) => {
-                console.log(snapshot.val())
                 this.setState(snapshot.val())
-                console.log(this.props.match.params)
             })
     }
 

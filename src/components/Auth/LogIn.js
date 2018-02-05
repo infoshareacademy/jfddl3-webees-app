@@ -40,7 +40,7 @@ const LogIn = props => (
                     style={{ margin: '20px' }}
                 />
                 <RaisedButton
-                    onClick={props.onLogInClick}
+                    onClick={props.onLogInByGoogleClick}
                     label="Zaloguj przez Google"
                     backgroundColor={webeesColors.darkGreen}
                     labelStyle={{ fontFamily: webeesFont }}
