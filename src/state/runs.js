@@ -10,17 +10,11 @@ const setRunsData = data => ({
 })
 
 export const addRun = dataToSave => (dispatch, getState) => {
-    console.log(dataToSave)
     dbRef.push(dataToSave)
-        .then(() => console.log('saved'))
-        .catch(() => console.log('error!'))
 }
 
 export const updateRun = (runId, dataToSave) => (dispatch, getState) => {
-    console.log(dataToSave)
     dbRef.child(runId).update(dataToSave)
-        .then(() => console.log('saved'))
-        .catch(() => console.log('error!'))
 }
 
 export const initRunsSync = () => (dispatch, getState) => {
