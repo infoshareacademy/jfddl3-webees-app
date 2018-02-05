@@ -14,10 +14,8 @@ import ShareButton from './components/ShareButton'
 import styles from './styles'
 import Auth from './components/Auth'
 
-
 import NewBarChart from './components/NewBarChart'
 import PieChart from './components/PieChart'
-import ReLineChart from './components/ReLineChart'
 
 
 class App extends Component {
@@ -39,11 +37,11 @@ class App extends Component {
                                 <AppBar
                                     onMenuClickProps={this.toggleSideBar}
 
-                        />
-                        <SideBar
-                            isSideBarOpenProps={this.state.isSideBarOpenState}
-                            toggleSideBarProps = {this.toggleSideBar}
-                        />
+                                />
+                                <SideBar
+                                    isSideBarOpenProps={this.state.isSideBarOpenState}
+                                    toggleSideBarProps = {this.toggleSideBar}
+                                />
 
                                 <Route path='/' component={Dashboard} exact={true}/>
                                 <Route path='/list' component={List}/>
