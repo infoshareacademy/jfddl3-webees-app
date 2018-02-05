@@ -9,6 +9,7 @@ const setUser = (user) => ({
     userData: user
 })
 
+
 const setLoginLogs = (logs) => ({
     type: SET_LOGIN_LOGS,
     logsData: logs
