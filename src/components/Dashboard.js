@@ -1,28 +1,35 @@
 import React from 'react';
 import NewBarChart from './NewBarChart'
 import PieChart from './PieChart'
-import ReLineChart from './ReLineChart'
-import {Grid, Row, Col} from 'react-flexbox-grid';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import WebeesPaper from './WebeesPaper';
 
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
-const Dashboard = (props) => {
+import { webeesColors } from '../styles'
+
+const Dashboard = props => {
     const cityRuns = props.runData.filter(run => run.category === 'city')
     const cityRunsLength = cityRuns.length
     const forestRun = props.runData.filter(run => run.category === 'forest')
     const forestRunLength = forestRun.length
+    const loginCount = Object.entries(props.loginCount).map(keyValueArray => (
+        {
+            "time": keyValueArray[0], // not working
+            "users": keyValueArray[1]
+        }
+    ))
 
-    const pieChartData = [{
-        value: forestRunLength,
-        name: 'Forest',
-        fill: 'lime'
-
-    },
+    const pieChartData = [
+        {
+            value: forestRunLength,
+            name: 'Forest',
+            fill: webeesColors.green
+        },
         {
             value: cityRunsLength,
             name: 'City',
-            fill: 'red'
+            fill: webeesColors.red
         }
     ]
 
@@ -36,12 +43,11 @@ const Dashboard = (props) => {
                                 data={pieChartData}
                             />
                         </Col>
-                        <Col xs={12} md={8} lg={6} >
+                        <Col xs={12} md={8} lg={6}>
                             <NewBarChart
-                                data={NewBarChart}
+                                data={loginCount}
                             />
                         </Col>
-
                     </Row>
                 </Grid>
             </div>
@@ -51,7 +57,8 @@ const Dashboard = (props) => {
 
 
 const mapStateToProps = state => ({
-    runData: state.runs.data
+    runData: state.runs.data,
+    loginCount: state.auth.loginCount
 })
 
 export default connect(
