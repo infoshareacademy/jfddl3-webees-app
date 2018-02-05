@@ -45,7 +45,7 @@ const Dashboard = props => {
                         </Col>
                         <Col xs={12} md={8} lg={6}>
                             <NewBarChart
-                                data={loginCount}
+
                             />
                         </Col>
                     </Row>

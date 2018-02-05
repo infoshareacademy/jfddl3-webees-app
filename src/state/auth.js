@@ -22,7 +22,7 @@ const setUsersData = (data) => ({
 export const initAuth = () => (dispatch, getState) => {
     auth.onAuthStateChanged((user) => {
         // if not logged in user is null !
-        dispatch(setUser(user))
+        dispatch(syncUsersData(user))USER_DATA blocked ligin
 
         if (user) {
             dispatch(logLoginDate())
